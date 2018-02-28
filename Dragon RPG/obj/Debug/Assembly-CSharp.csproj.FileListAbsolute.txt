@@ -40,7 +40,6 @@ C:\Users\mcronan\Documents\Unity2017\repos\rpg\01-Combat\Dragon RPG\Temp\bin\Deb
 C:\Users\mcronan\Documents\Unity2017\repos\rpg\01-Combat\Dragon RPG\Temp\bin\Debug\UnityEditor.iOS.Extensions.Xcode.dll
 C:\Users\mcronan\Documents\Unity2017\repos\rpg\01-Combat\Dragon RPG\Temp\bin\Debug\Unity.CecilTools.dll
 C:\Users\mcronan\Documents\Unity2017\repos\rpg\01-Combat\Dragon RPG\Temp\bin\Debug\Unity.Cecil.Pdb.dll
-C:\Users\mcronan\Documents\Unity2017\repos\rpg\01-Combat\Dragon RPG\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
 C:\Users\mcronan\Documents\Unity2017\repos\rpg\01-Combat\Dragon RPG\Temp\bin\Debug\UnityEngine.xml
 C:\Users\mcronan\Documents\Unity2017\repos\rpg\01-Combat\Dragon RPG\Temp\bin\Debug\UnityEditor.xml
 C:\Users\mcronan\Documents\Unity2017\repos\rpg\01-Combat\Dragon RPG\Temp\bin\Debug\UnityEngine.UI.xml

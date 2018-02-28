@@ -33,8 +33,11 @@ public class CursorAffordance : MonoBehaviour {
             case Layer.Enemy:
                 Cursor.SetCursor(enemyCursor, cursorHotspot, CursorMode.Auto);
                 break;
-            default:
+            case Layer.RaycastEndStop:
                 Cursor.SetCursor(unknwonCursor, cursorHotspot, CursorMode.Auto);
+                break;
+            default:
+                print("I'm a little cursor and I don't know what to do.");
                 return;
         }
     }
