@@ -23,26 +23,7 @@ public class PlayerMovement : MonoBehaviour
         currentDestination = transform.position;
     }
 
-    // Fixed update is called in sync with physics
-    private void FixedUpdate()
-    {
-        // TODO allow player to map later
-        //if (Input.GetKeyDown(KeyCode.G)) // G for gamepad.  
-        //{
-        //    isInDirectMode = !isInDirectMode;
-        //    currentDestination = transform.position;  // clears click target
-        //}
 
-        //if(isInDirectMode)
-        //{
-            ProcessDirectMovement();
-        //}
-        //else
-        //{
-        //    ProcessMouseMovement(); // Mouse Movement
-        //}
-        
-    }
 
     private void ProcessDirectMovement()
     {
@@ -56,26 +37,26 @@ public class PlayerMovement : MonoBehaviour
         thirdPersonCharacter.Move(movement, false, false);
     }
 
-    private void ProcessMouseMovement()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            clickPoint = cameraRaycaster.hit.point;
-            switch (cameraRaycaster.currentLayerHit)
-            {
-                case Layer.Walkable:
-                    currentDestination = ShortDestination(clickPoint, walkMoveStopRadius);
-                    break;
-                case Layer.Enemy:
-                    currentDestination = ShortDestination(clickPoint, attackMoveStopRadius);
-                    break;
-                default:
-                    print("Unexpected layer.");
-                    return;
-            }
-        }
-        WalkToDestination();
-    }
+    //private void ProcessMouseMovement()
+    //{
+    //    if (Input.GetMouseButton(0))
+    //    {
+    //        clickPoint = cameraRaycaster.hit.point;
+    //        switch (cameraRaycaster.currentLayerHit)
+    //        {
+    //            case Layer.Walkable:
+    //                currentDestination = ShortDestination(clickPoint, walkMoveStopRadius);
+    //                break;
+    //            case Layer.Enemy:
+    //                currentDestination = ShortDestination(clickPoint, attackMoveStopRadius);
+    //                break;
+    //            default:
+    //                print("Unexpected layer.");
+    //                return;
+    //        }
+    //    }
+    //    WalkToDestination();
+    //}
 
     private void WalkToDestination()
     {

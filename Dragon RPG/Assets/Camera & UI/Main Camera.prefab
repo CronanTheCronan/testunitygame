@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 81088997031583076}
   - component: {fileID: 114419760229367250}
   - component: {fileID: 114150637784759310}
+  - component: {fileID: 114232263818718244}
+  - component: {fileID: 114850262073502062}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -37,13 +39,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1916766276868456}
-  m_LocalRotation: {x: -0.041626774, y: -0, z: -0, w: 0.9991332}
-  m_LocalPosition: {x: 1.84, y: 2.13, z: -28.02}
+  m_LocalRotation: {x: 0.078900546, y: -0, z: -0, w: 0.9968825}
+  m_LocalPosition: {x: 1.84, y: 2.598, z: -27.828}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -4.7710004, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 9.051001, y: 0, z: 0}
 --- !u!20 &20396314773519618
 Camera:
   m_ObjectHideFlags: 1
@@ -62,7 +64,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 31.305899
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -99,13 +101,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  distance: 5
-  xSpeed: 120
-  ySpeed: 120
-  yMinLimit: -20
-  yMaxLimit: 80
-  distanceMin: 0.5
+  distance: 10
+  xSpeed: 10
+  ySpeed: 10
+  yMinLimit: 3
+  yMaxLimit: 50
+  distanceMin: 10
   distanceMax: 15
+--- !u!114 &114232263818718244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1916766276868456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cc72e73253f5940bf99c4c2c2f7dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkCursor: {fileID: 2800000, guid: bd41c573d7767cd47b914c3f1e38787e, type: 3}
+  enemyCursor: {fileID: 2800000, guid: 357a6722e47767747bf12773776ed6bc, type: 3}
+  unknwonCursor: {fileID: 2800000, guid: ef8ecbe744ce3474a8d6a22053492d46, type: 3}
+  cursorHotspot: {x: 0, y: 0}
 --- !u!114 &114419760229367250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,9 +136,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   smoothSpeed: 0.125
-  offset: {x: 0, y: 2.38, z: -3.33}
+  offset: {x: 0, y: 0, z: 0}
   RotateAroundPlayer: 1
   RotationSpeed: 2
+--- !u!114 &114850262073502062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1916766276868456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02853f5d34bd8f429969ac34c466d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerPriorities: 
 --- !u!124 &124614066206731068
 Behaviour:
   m_ObjectHideFlags: 1
