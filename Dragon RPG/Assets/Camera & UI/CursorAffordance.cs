@@ -9,8 +9,11 @@ public class CursorAffordance : MonoBehaviour {
     [SerializeField] Texture2D enemyCursor = null;
     [SerializeField] Texture2D unknwonCursor = null;
     [SerializeField] Vector2 cursorHotspot = new Vector2(0, 0);
+
+    // TODO fix fight between const and serialize field
     [SerializeField] const int walkableLayerNumber = 8;
     [SerializeField] const int enemyLayerNumber = 9;
+
     CameraRaycaster cameraRaycaster;
 
 	// Use this for initialization
@@ -18,14 +21,10 @@ public class CursorAffordance : MonoBehaviour {
         cameraRaycaster = GetComponent<CameraRaycaster>();
         cameraRaycaster.notifyLayerChangeObservers += OnLayerChanged;
 	}
-	
-	// Update is called once per frame
-	void LateUpdate () {
-        
-	}
 
     void OnLayerChanged(int newLayer)
     {
+        print("Cursor over new layer " + newLayer);
         switch (newLayer)
         {
             case walkableLayerNumber:

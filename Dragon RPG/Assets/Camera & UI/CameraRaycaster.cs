@@ -19,7 +19,7 @@ public class CameraRaycaster : MonoBehaviour
 	public event OnClickPriorityLayer notifyMouseClickObservers; // instantiate an observer set
 
 
-    void Update()
+    void LateUpdate()
 	{
 		// Check if pointer is over an interactable UI element
 		if (EventSystem.current.IsPointerOverGameObject ())
