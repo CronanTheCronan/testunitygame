@@ -6,12 +6,11 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(AICharacterControl))]
 [RequireComponent(typeof(ThirdPersonCharacter))]
-
 public class PlayerMovement : MonoBehaviour
 {
     ThirdPersonCharacter thirdPersonCharacter = null;   // A reference to the ThirdPersonCharacter on the object
     CameraRaycaster cameraRaycaster = null;
-    Vector3 currentDestination, clickPoint;
+    Vector3 clickPoint;
     AICharacterControl aiCharacterControl = null;
     GameObject walkTarget = null;
 
@@ -19,15 +18,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] const int walkableLayerNumber = 8;
     [SerializeField] const int enemyLayerNumber = 9;
 
-    //bool isInDirectMode = false;
+    bool isInDirectMode = false;
 
     void Start()
     {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
         thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
-        currentDestination = transform.position;
         aiCharacterControl = GetComponent<AICharacterControl>();
-        walkTarget = new GameObject("walkTarget");    
+        walkTarget = new GameObject("walkTarget");
+         
         cameraRaycaster.notifyMouseClickObservers += ProcessMouseClick;
     }
 

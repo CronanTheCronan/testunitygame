@@ -7,7 +7,7 @@ public class CursorAffordance : MonoBehaviour {
 
     [SerializeField] Texture2D walkCursor = null;
     [SerializeField] Texture2D enemyCursor = null;
-    [SerializeField] Texture2D unknwonCursor = null;
+    [SerializeField] Texture2D unknownCursor = null;
     [SerializeField] Vector2 cursorHotspot = new Vector2(0, 0);
 
     // TODO fix fight between const and serialize field
@@ -34,7 +34,7 @@ public class CursorAffordance : MonoBehaviour {
                 Cursor.SetCursor(enemyCursor, cursorHotspot, CursorMode.Auto);
                 break;
             default:
-                Cursor.SetCursor(unknwonCursor, cursorHotspot, CursorMode.Auto);
+                Cursor.SetCursor(unknownCursor, cursorHotspot, CursorMode.Auto);
                 return;
         }
     }
