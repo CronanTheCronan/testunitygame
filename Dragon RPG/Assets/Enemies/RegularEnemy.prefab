@@ -2162,7 +2162,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1378449899090410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 54.517654, y: 0, z: 29.263805}
+  m_LocalPosition: {x: 54.517654, y: 0, z: 38.425}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4058536689263394}
@@ -2180,7 +2180,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1931073133140724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.857, z: -0.04}
+  m_LocalPosition: {x: 0, y: 1.11, z: 0.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4695728139592418}
@@ -2578,11 +2578,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 100
   attackRadius: 4
-  damagePerShot: 9
+  secondsBetweenShot: 0.5
+  damagePerShot: 12.08
   chaseRadius: 10
   projectileToUse: {fileID: 1612060213366170, guid: 767c5807bfc74e248bc65e18a8731361,
     type: 2}
   projectileSocket: {fileID: 1931073133140724}
+  aimOffset: {x: 0, y: 1, z: 0}
 --- !u!114 &114750187166315004
 MonoBehaviour:
   m_ObjectHideFlags: 1
