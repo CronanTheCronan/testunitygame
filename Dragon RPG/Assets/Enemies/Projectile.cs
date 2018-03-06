@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour {
 
     
     public float projectileSpeed;
-    private float damageCaused;
+    float damageCaused;
 
     public void SetDamage(float damage)
     {

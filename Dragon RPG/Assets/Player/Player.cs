@@ -13,8 +13,7 @@ public class Player : MonoBehaviour, IDamagable {
     CameraRaycaster cameraRaycaster = null;
     GameObject currentTarget;
     float lastHitTime = 0f;
-
-    private float currentHealthPoints;
+    float currentHealthPoints;
 
     public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 

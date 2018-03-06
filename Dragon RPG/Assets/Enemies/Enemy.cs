@@ -7,18 +7,17 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class Enemy : MonoBehaviour, IDamagable {
 
     [SerializeField] float maxHealthPoints = 100f;
+    [SerializeField] float chaseRadius = 10f;
+
     [SerializeField] float attackRadius = 4f;
     [SerializeField] float secondsBetweenShot = 0.5f;
     [SerializeField] float damagePerShot = 9f;
-    [SerializeField] float chaseRadius = 10f;
     [SerializeField] GameObject projectileToUse;
     [SerializeField] GameObject projectileSocket;
     [SerializeField] Vector3 aimOffset = new Vector3(0, 1f, 0);
     
-
-    private float distanceToPlayer;
-    private float currentHealthPoints;
-    private bool isAttacking = false;
+    float currentHealthPoints;
+    bool isAttacking = false;
     AICharacterControl aiCharacterControl = null;
     GameObject player = null;
 
@@ -31,28 +30,8 @@ public class Enemy : MonoBehaviour, IDamagable {
 
     void Update()
     {
-        distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-        ChasePlayer();
-        AttackPlayer();
-    }
+        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
-    private void AttackPlayer()
-    {
-        if(distanceToPlayer <= attackRadius && !isAttacking)
-        {
-            isAttacking = true;
-            InvokeRepeating("SpawnProjectile", 0f, secondsBetweenShot);  // TODO switch to coroutines
-        }
-        else if(distanceToPlayer >= attackRadius && isAttacking)
-        {
-            isAttacking = false;
-            CancelInvoke("SpawnProjectile");
-        }
-    }
-
-    private void ChasePlayer()
-    {
-        
         if (distanceToPlayer <= chaseRadius)
         {
             aiCharacterControl.SetTarget(player.transform);
@@ -60,6 +39,17 @@ public class Enemy : MonoBehaviour, IDamagable {
         else
         {
             aiCharacterControl.SetTarget(transform);
+        }
+
+        if (distanceToPlayer <= attackRadius && !isAttacking)
+        {
+            isAttacking = true;
+            InvokeRepeating("SpawnProjectile", 0f, secondsBetweenShot);  // TODO switch to coroutines
+        }
+        else if (distanceToPlayer >= attackRadius && isAttacking)
+        {
+            isAttacking = false;
+            CancelInvoke("SpawnProjectile");
         }
     }
 

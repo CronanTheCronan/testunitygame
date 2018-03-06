@@ -630,7 +630,7 @@ Prefab:
     - target: {fileID: 195558865930211008, guid: e92858701acb05148888d152678f153c,
         type: 2}
       propertyPath: m_Acceleration
-      value: 10.83
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114338675722296362, guid: e92858701acb05148888d152678f153c,
         type: 2}
@@ -656,6 +656,11 @@ Prefab:
         type: 2}
       propertyPath: attackRadius
       value: 5.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 195558865930211008, guid: e92858701acb05148888d152678f153c,
+        type: 2}
+      propertyPath: m_Speed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e92858701acb05148888d152678f153c, type: 2}
