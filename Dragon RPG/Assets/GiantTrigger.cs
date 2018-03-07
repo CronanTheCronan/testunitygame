@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.ThirdPerson;
 using UnityEngine.AI;
 
 public class GiantTrigger : MonoBehaviour
 {
-    [SerializeField]
-    float triggerRadius = .5f;
+    [SerializeField] float triggerRadius = .5f;
     GameObject player = null;
     public GameObject Giant;
     GameObject enemySpawner = null;
     bool alreadySpawned = false;
     private NavMeshAgent agent;
     GameObject giantTarget = null;
+    GameObject Enemy;
+    
 
     // Use this for initialization
     void Start()
@@ -28,20 +30,13 @@ public class GiantTrigger : MonoBehaviour
         if (distanceToPlayer < triggerRadius && !alreadySpawned)
         {
             print("You made it!");
-            GameObject Enemy = Instantiate(Giant, enemySpawner.transform.position, Quaternion.identity);
+            Enemy = Instantiate(Giant, enemySpawner.transform.position, Quaternion.identity);
             alreadySpawned = true;
-            agent = Giant.GetComponent<NavMeshAgent>();
-            agent.autoBraking = false;
-            StartMove();
         }
+
+        
     }
 
-    void StartMove()
-    {
-        
-        
-        agent.destination = giantTarget.transform.position;
-    }
 
     void OnDrawGizmos()
     {
