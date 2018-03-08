@@ -25,7 +25,7 @@ public class CameraFollow : MonoBehaviour {
     [SerializeField] float xSpeed = 120.0f;
     [SerializeField] float ySpeed = 120.0f;
 
-    [SerializeField] float yMinLimit = -20f;
+    [SerializeField] float yMinLimit = 0f;
     [SerializeField] float yMaxLimit = 80f;
 
     [SerializeField] float distanceMin = .5f;
