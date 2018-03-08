@@ -22,13 +22,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
         thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
+        cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
         aiCharacterControl = GetComponent<AICharacterControl>();
         walkTarget = new GameObject("walkTarget");
-         
         cameraRaycaster.notifyMouseClickObservers += ProcessMouseClick;
     }
+
+    //void LateUpdate()
+    //{
+    //    ProcessDirectMovement();
+    //}
 
     void ProcessMouseClick(RaycastHit raycastHit, int layerHit)
     {

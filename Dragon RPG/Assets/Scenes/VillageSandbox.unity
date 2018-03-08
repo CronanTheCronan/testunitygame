@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -571,6 +571,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 54702587991837652, guid: e7610b588e0cec947b8faf2b551aaa94,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7610b588e0cec947b8faf2b551aaa94, type: 2}
   m_IsPrefabParent: 0
@@ -597,7 +602,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4572960757460874, guid: 8e175b5fc7f9a224395c6eb91c966a3b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 35.589462
+      value: 21.88
       objectReference: {fileID: 0}
     - target: {fileID: 4572960757460874, guid: 8e175b5fc7f9a224395c6eb91c966a3b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -605,7 +610,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4572960757460874, guid: 8e175b5fc7f9a224395c6eb91c966a3b, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 40.809143
+      value: 52.94
       objectReference: {fileID: 0}
     - target: {fileID: 4572960757460874, guid: 8e175b5fc7f9a224395c6eb91c966a3b, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1204,6 +1209,20 @@ Prefab:
     - target: {fileID: 1378449899090410, guid: 69afcc68ec6c091478a67ee31ef5c36d, type: 2}
       propertyPath: m_Name
       value: RegularEnemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114461329813107420, guid: 69afcc68ec6c091478a67ee31ef5c36d,
+        type: 2}
+      propertyPath: chaseRadius
+      value: 1.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 114461329813107420, guid: 69afcc68ec6c091478a67ee31ef5c36d,
+        type: 2}
+      propertyPath: attackRadius
+      value: 12.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4697246004145994, guid: 69afcc68ec6c091478a67ee31ef5c36d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.94
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69afcc68ec6c091478a67ee31ef5c36d, type: 2}

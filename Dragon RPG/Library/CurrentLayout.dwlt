@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1904
     height: 932
-  m_MinSize: {x: 681, y: 492}
+  m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 51
+  controlID: 61
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,10 +130,10 @@ MonoBehaviour:
     y: 0
     width: 1488
     height: 932
-  m_MinSize: {x: 404, y: 492}
+  m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 52
+  controlID: 62
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,10 +154,10 @@ MonoBehaviour:
     y: 0
     width: 1488
     height: 559
-  m_MinSize: {x: 404, y: 221}
-  m_MaxSize: {x: 8004, y: 4021}
+  m_MinSize: {x: 406, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 53
+  controlID: 63
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -254,8 +254,8 @@ MonoBehaviour:
     y: 0
     width: 416
     height: 932
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -394,14 +394,14 @@ MonoBehaviour:
     height: 538
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 11324.38913792542
+  lastFramingTime: 4700.7562504069965
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 49.743366, y: 5.9898915, z: 25.345034}
+    m_Target: {x: 61.024796, y: 0.74256444, z: 34.043884}
     speed: 2
-    m_Value: {x: 49.743366, y: 5.9898915, z: 25.345034}
+    m_Value: {x: 61.024796, y: 0.74256444, z: 34.043884}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -425,20 +425,20 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.13144927, y: 0.15776578, z: -0.021196593, w: -0.9784589}
+    m_Target: {x: 0.048505425, y: 0.6271813, z: -0.03918852, w: 0.776373}
     speed: 2
-    m_Value: {x: -0.13144927, y: 0.15776578, z: -0.021196593, w: -0.9784589}
+    m_Value: {x: 0.048505425, y: 0.6271813, z: -0.03918852, w: 0.776373}
   m_Size:
-    m_Target: 3.407842
+    m_Target: 19.699324
     speed: 2
-    m_Value: 3.407842
+    m_Value: 19.699324
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_ShowGlobalGrid: 1
-  m_LastSceneViewRotation: {x: -0.060272712, y: -0.00988596, z: 0.00059521355, w: -0.9981329}
-  m_LastSceneViewOrtho: 0
+  m_LastSceneViewRotation: {x: 0.5246795, y: 0.4309193, z: -0.64512956, w: 0.35046816}
+  m_LastSceneViewOrtho: 1
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
   m_LastLockedObject: {fileID: 0}
@@ -472,9 +472,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 6a010000
-    m_LastClickedID: 0
-    m_ExpandedIDs: 007cf1ff06f6f1ff5a2af2ff9e79ffff1e7affff207affffca9bffff9efbffff0000000052f70000
+    m_SelectedIDs: 82310100
+    m_LastClickedID: 78210
+    m_ExpandedIDs: 4c6dfdff4c77fdff98acfdffa09cffff0aa7ffffeac2fffff4dfffff00000000b441000080420000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -572,10 +572,10 @@ MonoBehaviour:
   m_LastProjectPath: C:\Users\mcronan\Documents\GitHub\testunitygame\Dragon RPG
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 197}
-    m_SelectedIDs: 262f0000
-    m_LastClickedID: 12070
-    m_ExpandedIDs: 00000000d82700000c290000602a0000aa2a0000ac2a0000a22c00007a2e00008c2e0000262f0000323200003432000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 181}
+    m_SelectedIDs: 1e3d0000
+    m_LastClickedID: 15646
+    m_ExpandedIDs: 000000005237000024380000463900008c3900008e3900001a3b00009c3c0000ae3c00001e3d0000644100006641000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -603,7 +603,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d82700000c290000602a0000682a0000aa2a0000122c0000a22c00007a2e00008c2e0000262f00003232000034320000
+    m_ExpandedIDs: 000000005237000024380000463900008c3900008e3900001a3b00009c3c0000ae3c00001e3d00006441000066410000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
