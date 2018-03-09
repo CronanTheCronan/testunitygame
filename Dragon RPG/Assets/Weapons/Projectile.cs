@@ -20,6 +20,7 @@ public class Projectile : MonoBehaviour {
         {
             (damageableComponent as IDamagable).TakeDamage(damageCaused);
         }
+        Destroy(gameObject);
     }
 
 }
