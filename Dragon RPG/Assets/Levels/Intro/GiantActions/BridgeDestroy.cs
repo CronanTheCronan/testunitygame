@@ -15,7 +15,7 @@ public class BridgeDestroy : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Giant"))
             Destroy(gameObject);
