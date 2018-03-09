@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkCursor: {fileID: 2800000, guid: bd41c573d7767cd47b914c3f1e38787e, type: 3}
   enemyCursor: {fileID: 2800000, guid: 357a6722e47767747bf12773776ed6bc, type: 3}
-  unknwonCursor: {fileID: 2800000, guid: ef8ecbe744ce3474a8d6a22053492d46, type: 3}
+  unknownCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
 --- !u!114 &114419760229367250
 MonoBehaviour:
@@ -135,10 +135,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  smoothSpeed: 0.125
-  offset: {x: 0, y: 0, z: 0}
-  RotateAroundPlayer: 1
-  RotationSpeed: 2
+  distance: 5
+  xSpeed: 120
+  ySpeed: 120
+  yMinLimit: 0
+  yMaxLimit: 80
+  distanceMin: 0.5
+  distanceMax: 15
 --- !u!114 &114850262073502062
 MonoBehaviour:
   m_ObjectHideFlags: 1
