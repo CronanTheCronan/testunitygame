@@ -8,6 +8,7 @@ TagManager:
   - Giant
   - GiantTarget
   - leCube
+  - Collide
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - 
   - Walkable
   - Enemy
-  - 
+  - Player
   - 
   - 
   - 

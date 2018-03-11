@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Lake.unity
+- path: Assets/Levels/Lake.unity
   isLoaded: 1
   isActive: 1
