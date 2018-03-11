@@ -1,4 +1,8 @@
-﻿public interface IDamagable
+﻿
+namespace RPG.Core
 {
-    void TakeDamage(float damage);
+    public interface IDamagable
+    {
+        void TakeDamage(float damage);
+    }
 }
