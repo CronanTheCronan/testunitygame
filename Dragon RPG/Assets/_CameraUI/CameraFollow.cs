@@ -47,8 +47,8 @@ namespace RPG.CameraUI
         {
             if (target)
             {
-                x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
-                y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+                x += Input.GetAxis("XBox_RStickX") * xSpeed * distance * 0.02f;
+                y += Input.GetAxis("XBox_RStickY") * ySpeed * 0.02f;
 
                 y = ClampAngle(y, yMinLimit, yMaxLimit);
 

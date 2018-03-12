@@ -8,15 +8,18 @@ namespace RPG.Characters
     [RequireComponent(typeof (ThirdPersonCharacter))]
     public class PlayerMovement : MonoBehaviour
     {
+        Animator animator;
         private ThirdPersonCharacter character; // A reference to the ThirdPersonCharacter on the object
         private Transform mainCamera;                  // A reference to the main camera in the scenes transform
         private Vector3 cameraForwardDirection;             // The current forward direction of the camera
         private Vector3 move;
         private bool jumping;                      // the world-relative desired move direction, calculated from the camForward and user input.
+        private bool attacking;
 
         
         private void Start()
         {
+            animator = GetComponent<Animator>();
             // get the transform of the main camera
             if (Camera.main != null)
             {
@@ -36,10 +39,21 @@ namespace RPG.Characters
 
         private void Update()
         {
+            float triggerAxis = Input.GetAxisRaw("XBox_Triggers");
             if (!jumping)
             {
-                jumping = Input.GetKey(KeyCode.Space);
+                jumping = Input.GetButtonDown("XBox_A_Button");
             }
+
+            if (triggerAxis == 0)
+                attacking = false;
+
+            if (!attacking && !jumping && triggerAxis < 0)
+            {
+                attacking = true;
+                animator.SetTrigger("Attack");
+            }
+                
         }
 
 
@@ -47,8 +61,8 @@ namespace RPG.Characters
         private void FixedUpdate()
         {
             // read inputs
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            float v = CrossPlatformInputManager.GetAxis("Vertical");
+            float h = Input.GetAxis("Horizontal");
+            float v = Input.GetAxis("Vertical");
             bool crouch = Input.GetKey(KeyCode.C);
 
             // calculate move direction to pass to character

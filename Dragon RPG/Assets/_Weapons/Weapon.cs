@@ -11,11 +11,23 @@ namespace RPG.Weapons
 
         public Transform gripTransform;
 
-        [SerializeField]
-        GameObject weaponPrefab;
-        [SerializeField]
-        AnimationClip attackAnimation;
+        [SerializeField] GameObject weaponPrefab;
+        [SerializeField] AnimationClip attackAnimation;
+        [SerializeField] float minTimeBetweenHits = .5f;
+        [SerializeField] float maxAttackRange = 2f;
 
+
+
+        public float GetMaxAttackRange()
+        {
+            return maxAttackRange;
+        }
+
+        public float GetMinTimeBetweenHits()
+        {
+            // TODO consider whether we take animation time between hits
+            return minTimeBetweenHits;
+        }
 
         public GameObject GetWeaponPrefab()
         {
