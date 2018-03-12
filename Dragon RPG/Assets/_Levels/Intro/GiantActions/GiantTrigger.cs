@@ -16,6 +16,7 @@ namespace RPG.Levels
         bool alreadySpawned = false;
         private NavMeshAgent agent;
         GameObject giantTarget = null;
+        GameObject giantTargetBridge = null;
         GameObject Enemy;
 
 
@@ -32,7 +33,6 @@ namespace RPG.Levels
             float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
             if (distanceToPlayer < triggerRadius && !alreadySpawned)
             {
-                print("You made it!");
                 Enemy = Instantiate(Giant, enemySpawner.transform.position, Quaternion.identity);
                 alreadySpawned = true;
             }

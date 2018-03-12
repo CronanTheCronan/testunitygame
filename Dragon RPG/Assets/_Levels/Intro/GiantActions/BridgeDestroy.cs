@@ -22,7 +22,7 @@ namespace RPG.Levels
 
         void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.CompareTag("Giant"))
+            if (giant)
                 Destroy(gameObject);
         }
     }

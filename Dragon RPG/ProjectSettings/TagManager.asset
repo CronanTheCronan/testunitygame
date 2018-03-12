@@ -9,6 +9,8 @@ TagManager:
   - GiantTarget
   - leCube
   - Collide
+  - Bridge
+  - GiantTargetBridge
   layers:
   - Default
   - TransparentFX

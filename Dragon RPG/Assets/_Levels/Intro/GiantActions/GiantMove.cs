@@ -3,68 +3,78 @@ using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityStandardAssets.Characters.ThirdPerson;
 using UnityEngine;
+using System;
 
 namespace RPG.Levels
 {
     public class GiantMove : MonoBehaviour
     {
-        [SerializeField]
-        float giantTargetRadius = 2.0f;
-        GameObject giantTarget = null;
-        GameObject giantClone = null;
-        private ThirdPersonCharacter character;
-        private bool hasMoved = false;
-        private NavMeshAgent agent;
+        [SerializeField] float giantTargetRadius = 5.0f;
+        GameObject giantTargetBridge = null;
+        GameObject giantTargetEnd = null;
+        ThirdPersonCharacter character;
+        NavMeshAgent agent;
+        private bool hasReachedBridge = false;
+        private bool hasReachedEndGoal = false;
+        private float distanceToTarget;
 
 
         // Use this for initialization
         void Start()
         {
-            giantTarget = GameObject.FindGameObjectWithTag("GiantTarget");
+            giantTargetBridge = GameObject.FindGameObjectWithTag("GiantTargetBridge");
+            //giantTargetEnd = GameObject.FindGameObjectWithTag("GiantTarget");
             agent = GetComponent<NavMeshAgent>();
+            
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, giantTarget.transform.position);
-            if (distanceToPlayer <= giantTargetRadius)
+            print(hasReachedBridge);
+            print(hasReachedEndGoal);
+            if (!hasReachedBridge)
             {
-                print("Giant has reached destination");
-                DestroyGameObject();
+                GiantMoveToBridge();
             }
-
-            if (!hasMoved)
+            if (hasReachedBridge && !hasReachedEndGoal)
             {
-                GiantMoving();
-
+                GiantMoveToEnd();
             }
-
-
+            //if(!hasReachedEndGoal)
+            //{
+            //    if(!hasReachedBridge)
+            //    {
+            //        GiantMoveToBridge();
+            //    }
+            //    else
+            //    {
+            //        GiantMoveToEnd();
+            //    }
+            //}
         }
 
-        void GiantMoving()
+        void GiantMoveToBridge()
         {
-            //agent.SetDestination(giantTarget.transform.position);
-            //gameObject.GetComponent<NavMeshAgent>().autoBraking = false;
-            GetComponent<NavMeshAgent>().destination = giantTarget.transform.position;
-            //GetComponent<ThirdPersonCharacter>().Move(giantTarget.transform.position, false, false);
-            if (transform.position == giantTarget.transform.position)
+            float distanceToTarget = Vector3.Distance(transform.position, giantTargetBridge.transform.position);
+            agent.destination = giantTargetBridge.transform.position;
+            if (distanceToTarget <= giantTargetRadius)
             {
-                hasMoved = true;
+                hasReachedBridge = true;
             }
         }
 
-        void DestroyGameObject()
+        void GiantMoveToEnd()
         {
-            Destroy(gameObject);
+            float distanceToEndTarget = Vector3.Distance(transform.position, giantTargetEnd.transform.position);
+            print("Distance to end: " + distanceToEndTarget);
+            agent.destination = giantTargetEnd.transform.position;
+            if (distanceToEndTarget <= giantTargetRadius)
+            {
+                hasReachedEndGoal = true;
+                Destroy(gameObject);
+            }
         }
 
-        void OnDrawGizmos()
-        {
-            // Draw movement gizmos
-            Gizmos.color = Color.white;
-            Gizmos.DrawWireSphere(giantTarget.transform.position, giantTargetRadius);
-        }
     }
 }

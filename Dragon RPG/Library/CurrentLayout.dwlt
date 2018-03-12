@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 948
-  m_MinSize: {x: 679, y: 492}
+  m_MinSize: {x: 681, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 96
+  controlID: 82
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,10 +130,10 @@ MonoBehaviour:
     y: 0
     width: 1525
     height: 948
-  m_MinSize: {x: 404, y: 492}
+  m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 29
+  controlID: 12
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,10 +154,10 @@ MonoBehaviour:
     y: 0
     width: 1525
     height: 561
-  m_MinSize: {x: 404, y: 221}
-  m_MaxSize: {x: 8004, y: 4021}
+  m_MinSize: {x: 406, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 30
+  controlID: 13
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -238,7 +238,7 @@ MonoBehaviour:
   - {fileID: 13}
   - {fileID: 12}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -265,7 +265,7 @@ MonoBehaviour:
   - {fileID: 16}
   - {fileID: 15}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -540,10 +540,10 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 1493
-    y: 116
-    width: 414
-    height: 911
+    x: 1527
+    y: 91
+    width: 393
+    height: 927
   m_PersistentViewDataDictionary: {fileID: 0}
 --- !u!114 &17
 MonoBehaviour:
@@ -650,14 +650,14 @@ MonoBehaviour:
     height: 540
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 13585.4274296639
+  lastFramingTime: 4496.187533798418
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.023901, y: 101.21359, z: -42.938244}
+    m_Target: {x: 0.37, y: 100.8, z: 175.06}
     speed: 2
-    m_Value: {x: -1.023901, y: 101.21359, z: -42.938244}
+    m_Value: {x: 0.37, y: 100.8, z: 175.06}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -681,13 +681,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.00043255815, y: 0.6896592, z: 0.0004112414, w: -0.72413397}
+    m_Target: {x: 0.15892929, y: -0.6732428, z: 0.15154363, w: 0.7060596}
     speed: 2
-    m_Value: {x: 0.00043255815, y: 0.6896592, z: 0.0004112414, w: -0.72413397}
+    m_Value: {x: 0.15892929, y: -0.6732428, z: 0.15154363, w: 0.7060596}
   m_Size:
-    m_Target: 3.1777787
+    m_Target: 2.9882894
     speed: 2
-    m_Value: 3.1777787
+    m_Value: 2.9882894
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -727,24 +727,24 @@ MonoBehaviour:
     height: 540
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 6c400000
+    scrollPos: {x: 0, y: 229}
+    m_SelectedIDs: 1e360000
     m_LastClickedID: 0
-    m_ExpandedIDs: 1c6af4ff647cfbff0e30fcfff2eefdff4ad2ffff50d2ffff52d2ffff64d2ffff7ed2ffff8ed2ffffa6d2ffffa8d2ffffd8d5ffff9efbffff00000000ca4f0000
+    m_ExpandedIDs: 9e9efeff9cfbffff9efbffff00000000b24f0000e64f0000f04f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Shoulder_L
-      m_OriginalName: Shoulder_L
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -11678
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
@@ -808,7 +808,7 @@ MonoBehaviour:
     height: 366
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SearchFilter:
-    m_NameFilter: fall
+    m_NameFilter: hit
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -819,19 +819,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/_Characters/Animations
+    - Assets/_Characters/Animations/Unarmed
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/_Characters/Animations
+  - Assets/_Characters/Animations/Unarmed
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\mcronan\Documents\GitHub\testunitygame\Dragon RPG
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 75.543915}
+    scrollPos: {x: 0, y: 99}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002e280000f42d000006330000483700001e38000094390000823d0000d0460000704b0000a44d0000164f00007c5900007e59000080590000825900008459000086590000885900008a5900008c5900008e59000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000002e280000f42d0000063300003c3700001238000088390000763d0000c83d00002e410000c24600008c4d0000525900005459000056590000585900005a5900005c5900005e5900006059000062590000645900006659000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -859,7 +859,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002e280000f42d0000483700001e380000823d0000704b0000a44d00007c5900007e59000080590000825900008459000086590000885900008a5900008c5900008e590000
+    m_ExpandedIDs: 000000002e280000f42d0000063300003c3700001238000088390000763d0000c24600008c4d0000fe4e0000525900005459000056590000585900005a5900005c5900005e59000060590000625900006459000066590000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -911,7 +911,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 157}
     m_GridSize: 64
   m_DirectoriesAreaWidth: 252
 --- !u!114 &22
