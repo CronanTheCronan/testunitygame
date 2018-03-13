@@ -4,19 +4,35 @@ using UnityEngine;
 
 public class DestroyBridge : MonoBehaviour {
 
-    GameObject bridge;
-    GameObject giant;
+    [SerializeField] int layerFilter = 11;
+    [SerializeField] float triggerRadius = 5f;
+    [SerializeField] bool destroyed = false;
 
+    GameObject[] leCubes;
+    
     void Start()
     {
-        bridge = GameObject.FindGameObjectWithTag("Bridge");
-        giant = GameObject.FindGameObjectWithTag("Giant");
+        SphereCollider sphereCollider = gameObject.AddComponent<SphereCollider>();
+        //sphereCollider.isTrigger = true;
+        sphereCollider.radius = triggerRadius;
+        
+        //sphereCollider.transform.position = new Vector3(10f, 0.04f, 78f); 
     }
 
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider other)
     {
-        Destroy(bridge);
-        DestroyObject(giant);
+        if(other.gameObject.layer == layerFilter)
+        {
+            if (leCubes == null)
+                leCubes = GameObject.FindGameObjectsWithTag("leCube");
+            Destroy(gameObject);
+            foreach (GameObject leCube in leCubes)
+            {
+                Destroy(leCube);
+            }
+           
+            destroyed = true;
+        }
     }
 
 }
