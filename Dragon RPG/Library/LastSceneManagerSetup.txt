@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Levels/Intro Sandbox.unity
+- path: Assets/_Levels/Lake.unity
   isLoaded: 1
   isActive: 1

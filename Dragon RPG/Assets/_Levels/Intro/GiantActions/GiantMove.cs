@@ -18,12 +18,10 @@ namespace RPG.Levels
         // Use this for initialization
         void Start()
         {
-            //giantTargetBridge = GameObject.FindGameObjectWithTag("GiantTargetBridge");
             giantTargetEnd = GameObject.FindGameObjectWithTag("GiantTarget");
             agent = GetComponent<NavMeshAgent>();
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (!hasReachedGoal)
@@ -42,6 +40,5 @@ namespace RPG.Levels
                 Destroy(gameObject);
             }
         }
-
     }
 }

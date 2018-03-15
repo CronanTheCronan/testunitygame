@@ -13,10 +13,7 @@ public class DestroyBridge : MonoBehaviour {
     void Start()
     {
         SphereCollider sphereCollider = gameObject.AddComponent<SphereCollider>();
-        //sphereCollider.isTrigger = true;
         sphereCollider.radius = triggerRadius;
-        
-        //sphereCollider.transform.position = new Vector3(10f, 0.04f, 78f); 
     }
 
     void OnTriggerEnter(Collider other)
@@ -30,9 +27,7 @@ public class DestroyBridge : MonoBehaviour {
             {
                 Destroy(leCube);
             }
-           
             destroyed = true;
         }
     }
-
 }
