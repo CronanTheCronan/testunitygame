@@ -1935,6 +1935,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114338675722296362, guid: e92858701acb05148888d152678f153c,
+        type: 2}
+      propertyPath: attackRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114338675722296362, guid: e92858701acb05148888d152678f153c,
+        type: 2}
+      propertyPath: chaseRadius
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e92858701acb05148888d152678f153c, type: 2}
   m_IsPrefabParent: 0
@@ -4037,19 +4047,7 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1731399957}
-    - target: {fileID: 114093165333810542, guid: 093a0f99da878d941aabe0ec1eee324f,
-        type: 2}
-      propertyPath: xSpeed
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 114093165333810542, guid: 093a0f99da878d941aabe0ec1eee324f,
-        type: 2}
-      propertyPath: ySpeed
-      value: 50
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114928395632031346, guid: 093a0f99da878d941aabe0ec1eee324f, type: 2}
-    - {fileID: 114891484409373334, guid: 093a0f99da878d941aabe0ec1eee324f, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 093a0f99da878d941aabe0ec1eee324f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1946607986
@@ -4346,17 +4344,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114663335067523474, guid: 32fc8323d5c22ce4dbf72cf3c3c9e293,
-        type: 2}
-      propertyPath: staminaBar
-      value: 
-      objectReference: {fileID: 904421486}
     - target: {fileID: 136974799109618272, guid: 32fc8323d5c22ce4dbf72cf3c3c9e293,
         type: 2}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 52baaeb214519f347a35cf0edfd262ff,
         type: 2}
+    - target: {fileID: 114663335067523474, guid: 32fc8323d5c22ce4dbf72cf3c3c9e293,
+        type: 2}
+      propertyPath: staminaBar
+      value: 
+      objectReference: {fileID: 904421486}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 32fc8323d5c22ce4dbf72cf3c3c9e293, type: 2}
   m_IsPrefabParent: 0

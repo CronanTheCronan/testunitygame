@@ -23,9 +23,8 @@ GameObject:
   - component: {fileID: 92408269908440902}
   - component: {fileID: 124837281918370270}
   - component: {fileID: 81250946798133932}
-  - component: {fileID: 114891484409373334}
-  - component: {fileID: 114928395632031346}
   - component: {fileID: 114093165333810542}
+  - component: {fileID: 114841534911762620}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -144,7 +143,7 @@ MonoBehaviour:
   yMaxLimit: 40
   distanceMin: 5
   distanceMax: 12
---- !u!114 &114891484409373334
+--- !u!114 &114841534911762620
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -152,25 +151,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1076575768704734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d02853f5d34bd8f429969ac34c466d07, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e2d2e296ff9b7f4aa94ea97a2f0b796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerPriorities: 0900000008000000
---- !u!114 &114928395632031346
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1076575768704734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68cc72e73253f5940bf99c4c2c2f7dce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkCursor: {fileID: 2800000, guid: bd41c573d7767cd47b914c3f1e38787e, type: 3}
-  enemyCursor: {fileID: 2800000, guid: 357a6722e47767747bf12773776ed6bc, type: 3}
-  unknownCursor: {fileID: 0}
-  cursorHotspot: {x: 0, y: 0}
+  cursorTexture: {fileID: 2800000, guid: 0e7705d962ac8fd47a963c4f350d87f7, type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!124 &124837281918370270
 Behaviour:
   m_ObjectHideFlags: 1

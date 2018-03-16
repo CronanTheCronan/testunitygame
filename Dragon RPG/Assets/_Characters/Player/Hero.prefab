@@ -685,7 +685,7 @@ MonoBehaviour:
   enemyLayer: 9
   maxHealthPoints: 100
   damagePerHit: 10
-  weaponInUse: {fileID: 11400000, guid: 407803874d603a54da4801ad61deb1d2, type: 2}
+  weaponInUse: {fileID: 11400000, guid: 3b6f6a3dbc525ef4d9ec6b10aa4f3075, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: d6b738ef661e1a147a20a1c6e66b9fa6,
     type: 2}
 --- !u!114 &114663335067523474
@@ -699,8 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9391ac182ede74998c4cba0dbb7637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staminaBar: {fileID: 114500463143377016, guid: 75a43cca039264395b99698681e52275,
-    type: 2}
+  staminaBar: {fileID: 0}
   maxStaminaPoints: 100
   energyUsed: 10
 --- !u!114 &114768731841738130

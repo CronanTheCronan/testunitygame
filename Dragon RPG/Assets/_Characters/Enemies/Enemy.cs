@@ -13,32 +13,32 @@ namespace RPG.Characters
     public class Enemy : MonoBehaviour, IDamagable
     {
 
-        [SerializeField]
-        float maxHealthPoints = 100f;
-        [SerializeField]
-        float chaseRadius = 10f;
-        [SerializeField]
-        float attackRadius = 4f;
-        [SerializeField]
-        float secondsBetweenShot = 0.5f;
-        [SerializeField]
-        float damagePerShot = 9f;
-        [SerializeField]
-        GameObject projectileToUse;
-        [SerializeField]
-        GameObject projectileSocket;
-        [SerializeField]
-        Vector3 aimOffset = new Vector3(0, 1f, 0);
+        [SerializeField] float maxHealthPoints = 100f;
+        [SerializeField] float chaseRadius = 10f;
+        [SerializeField] float attackRadius = 4f;
+        [SerializeField] float secondsBetweenShot = 0.5f;
+        [SerializeField] float damagePerShot = 9f;
+        [SerializeField] GameObject projectileToUse;
+        [SerializeField] GameObject projectileSocket;
+        [SerializeField] Vector3 aimOffset = new Vector3(0, 1f, 0);
+
+        float playerDamage = 200f;
 
         float currentHealthPoints;
         bool isAttacking = false;
         AICharacterControl aiCharacterControl = null;
         GameObject player = null;
         CapsuleCollider capsuleCollider;
+        Weapon weapon;
+
+        Component playerMovement;
+        bool isPlayerAttacking;
 
         void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<PlayerMovement>().notifyPlayerAttackObservers += PlayerIsAttacking;
+
             aiCharacterControl = GetComponent<AICharacterControl>();
             currentHealthPoints = maxHealthPoints;
         }
@@ -81,11 +81,6 @@ namespace RPG.Characters
             newProjectile.GetComponent<Rigidbody>().velocity = unitVectorToPlayer * projectileSpeed;
         }
 
-        public void SpawnProjectile()
-        {
-
-        }
-
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
         public void TakeDamage(float damage)
@@ -94,10 +89,22 @@ namespace RPG.Characters
             if (currentHealthPoints <= 0) { Destroy(gameObject); }
         }
 
-        void OnCollisionEnter(Collision other)
+        void PlayerIsAttacking(bool attackStatus)
         {
-            if (player.GetComponentInChildren<CapsuleCollider>() || player.GetComponentInChildren<BoxCollider>()) //TODO change so player colliding doesn't impact health of enemy.
-                TakeDamage(damagePerShot); //TODO change to player damage.
+            if (attackStatus)
+            {
+                isPlayerAttacking = true;
+            }
+        }
+
+        void OnTriggerEnter(Collider other)
+        {
+            //isPlayerAttacking = player.gameObject.GetComponent<PlayerMovement>().Attacking;
+            if (isPlayerAttacking)
+            {
+                print("I hit you for " + playerDamage + " dps");
+                TakeDamage(playerDamage);
+            }
         }
 
         void OnDrawGizmos()

@@ -18,6 +18,8 @@ namespace RPG.Characters
         private bool attacking = false;
         private bool rolling = false;
 
+        public bool Attacking { get { return attacking; } }
+
         public delegate void OnPlayerAttacking(bool attacking); // declare new delegate type
         public event OnPlayerAttacking notifyPlayerAttackObservers; // instantiate an observer set
 
@@ -40,14 +42,6 @@ namespace RPG.Characters
             character = GetComponent<ThirdPersonCharacter>();
         }
 
-
-        private void Update()
-        {
-            
-                
-        }
-
-
         // Fixed update is called in sync with physics
         private void FixedUpdate()
         {
@@ -62,12 +56,10 @@ namespace RPG.Characters
 
             if (!attacking && !jumping && triggerAxis < 0)
             {
-                attacking = true;
-                animator.SetTrigger("Attack");
-                NotifyPlayerAttackObservers(attacking);
+                PlayerAttack();
             }
 
-            if(!rolling && !attacking && Input.GetButtonDown("XBox_B_Button"))
+            if (!rolling && !attacking && Input.GetButtonDown("XBox_B_Button"))
             {
                 Roll();
             }
@@ -90,14 +82,18 @@ namespace RPG.Characters
                 move = v*Vector3.forward + h*Vector3.right;
             }
 
-			// walk speed multiplier
-	        //if (Input.GetButton("XBox_LStick_Click")) move *= 10f;
-
 
             // pass all parameters to the character control script
             character.Move(move, crouch, jumping);
             jumping = false;
 
+        }
+
+        private void PlayerAttack()
+        {
+            attacking = true;
+            animator.SetTrigger("Attack");
+            NotifyPlayerAttackObservers(attacking);
         }
 
         void NotifyPlayerAttackObservers(bool attackStatus)
