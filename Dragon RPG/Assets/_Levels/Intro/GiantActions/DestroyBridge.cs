@@ -6,7 +6,6 @@ public class DestroyBridge : MonoBehaviour {
 
     [SerializeField] int layerFilter = 11;
     [SerializeField] float triggerRadius = 5f;
-    [SerializeField] bool destroyed = false;
 
     GameObject[] leCubes;
     
@@ -27,7 +26,6 @@ public class DestroyBridge : MonoBehaviour {
             {
                 Destroy(leCube);
             }
-            destroyed = true;
         }
     }
 }

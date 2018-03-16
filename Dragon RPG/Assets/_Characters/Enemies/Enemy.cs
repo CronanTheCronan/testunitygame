@@ -22,7 +22,7 @@ namespace RPG.Characters
         [SerializeField] GameObject projectileSocket;
         [SerializeField] Vector3 aimOffset = new Vector3(0, 1f, 0);
 
-        float playerDamage = 200f;
+        float playerDamage = 10f;
 
         float currentHealthPoints;
         bool isAttacking = false;
@@ -32,12 +32,13 @@ namespace RPG.Characters
         Weapon weapon;
 
         Component playerMovement;
-        bool isPlayerAttacking;
+        [SerializeField] bool isPlayerAttacking;
 
         void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player");
             player.GetComponent<PlayerMovement>().notifyPlayerAttackObservers += PlayerIsAttacking;
+            //player.GetComponent<PlayerMovement>().notifyPlayerIdleObservers += PlayerIsIdle;
 
             aiCharacterControl = GetComponent<AICharacterControl>();
             currentHealthPoints = maxHealthPoints;
@@ -88,6 +89,14 @@ namespace RPG.Characters
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
             if (currentHealthPoints <= 0) { Destroy(gameObject); }
         }
+
+        //void PlayerIsIdle(bool idleStatus)
+        //{
+        //    if (idleStatus)
+        //    {
+        //        isPlayerAttacking = false;
+        //    }
+        //}
 
         void PlayerIsAttacking(bool attackStatus)
         {

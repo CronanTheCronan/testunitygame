@@ -15,16 +15,13 @@ namespace RPG.Characters
     public class Player : MonoBehaviour, IDamagable
     {
 
-        [SerializeField] int enemyLayer = 9;
         [SerializeField] float maxHealthPoints = 100f;
-        [SerializeField] float damagePerHit = 10f;
-
+        //[SerializeField] float damagePerHit = 10f;
         [SerializeField] Weapon weaponInUse;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
 
         Animator animator;
-        CameraRaycaster cameraRaycaster = null;
-        float lastHitTime = 0f;
+        //CameraRaycaster cameraRaycaster = null;
         float currentHealthPoints;
 
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
@@ -71,20 +68,10 @@ namespace RPG.Characters
             return dominantHands[0].gameObject;
         }
 
-        public void AttackTarget(GameObject target)
-        {
-            var enemyComponent = target.GetComponent<Enemy>();
-            if (Time.time - lastHitTime > weaponInUse.GetMinTimeBetweenHits())
-            {
-                enemyComponent.TakeDamage(damagePerHit);
-                lastHitTime = Time.time;
-            }
-        }
-
-        bool TargetInRange(GameObject target)
-        {
-            float distanceToTarget = (target.transform.position - transform.position).magnitude;
-            return distanceToTarget <= weaponInUse.GetMaxAttackRange();
-        }
+        //bool TargetInRange(GameObject target)
+        //{
+        //    float distanceToTarget = (target.transform.position - transform.position).magnitude;
+        //    return distanceToTarget <= weaponInUse.GetMaxAttackRange();
+        //}
     }
 }

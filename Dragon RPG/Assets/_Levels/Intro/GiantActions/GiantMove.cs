@@ -11,7 +11,6 @@ namespace RPG.Levels
     {
         [SerializeField] float giantTargetRadius = 5.0f;
         [SerializeField] bool hasReachedGoal = false;
-        GameObject giantTargetBridge = null;
         GameObject giantTargetEnd = null;
         NavMeshAgent agent;
 

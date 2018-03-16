@@ -14,9 +14,15 @@ namespace RPG.Characters
         private Transform mainCamera;                  // A reference to the main camera in the scenes transform
         private Vector3 cameraForwardDirection;             // The current forward direction of the camera
         private Vector3 move;
-        private bool jumping;                      // the world-relative desired move direction, calculated from the camForward and user input.
-        private bool attacking = false;
+        private bool idle;
+        private bool jumping = false;                      // the world-relative desired move direction, calculated from the camForward and user input.
+        public bool attacking = false;
         private bool rolling = false;
+        private float triggerAxis;
+        private float baseDamage = 10f;
+
+        //Temp for debugging
+        [SerializeField] SpecialAbility[] abilities;
 
         public bool Attacking { get { return attacking; } }
 
@@ -25,6 +31,7 @@ namespace RPG.Characters
 
         private void Start()
         {
+            abilities[0].AddComponent(gameObject);
             animator = GetComponent<Animator>();
             // get the transform of the main camera
             if (Camera.main != null)
@@ -40,23 +47,30 @@ namespace RPG.Characters
 
             // get the third person character ( this should never be null due to require component )
             character = GetComponent<ThirdPersonCharacter>();
+            
         }
 
         // Fixed update is called in sync with physics
         private void FixedUpdate()
         {
-            float triggerAxis = Input.GetAxisRaw("XBox_Triggers");
-            if (!jumping)
+            triggerAxis = Input.GetAxisRaw("XBox_Triggers");
+
+            if(Input.GetButtonDown("XBox_A_Button"))
             {
-                jumping = Input.GetButtonDown("XBox_A_Button");
+                jumping = true;
+                //.SetBool
             }
 
-            if (triggerAxis == 0)
-                attacking = false;
-
-            if (!attacking && !jumping && triggerAxis < 0)
+            if (!attacking && !rolling && !jumping && triggerAxis < 0)
             {
-                PlayerAttack();
+                PlayerBasicAttack();
+            }
+
+            if (!attacking && !rolling && !jumping && Input.GetButtonDown("XBox_LBumper"))
+            {
+                attacking = true;
+                AttemptSpecialAbility(0);
+                attacking = false;
             }
 
             if (!rolling && !attacking && Input.GetButtonDown("XBox_B_Button"))
@@ -89,17 +103,41 @@ namespace RPG.Characters
 
         }
 
-        private void PlayerAttack()
+        private void AttemptSpecialAbility(int abilityIndex)
         {
+            var stamina = GetComponent<Stamina>();
+            if (stamina.IsStaminaAvailable(10f))
+            {
+                stamina.ConsumeEnergy(10f);
+                var abilityParams = new AbilityUseParams(baseDamage);
+                abilities[abilityIndex].Use(abilityParams);
+            }
+        }
+
+        private void PlayerBasicAttack()
+        {
+            var stamina = GetComponent<Stamina>();
+
             attacking = true;
             animator.SetTrigger("Attack");
             NotifyPlayerAttackObservers(attacking);
+
+            if (stamina.IsStaminaAvailable(10f))
+            {
+                stamina.ConsumeEnergy(10f);
+            }
+
+            attacking = false;
+            NotifyPlayerAttackObservers(attacking);
         }
+
 
         void NotifyPlayerAttackObservers(bool attackStatus)
         {
             if (attacking)
                 notifyPlayerAttackObservers(true);
+            else if (!attacking)
+                notifyPlayerAttackObservers(false);
         }
 
         void Roll()
