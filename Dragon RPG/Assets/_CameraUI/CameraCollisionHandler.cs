@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraCollisionHandler : MonoBehaviour {
 
+    public LayerMask collisionLayer;
 
     [HideInInspector] public bool colliding = false;
     [HideInInspector] public Vector3[] adjustedCameraClipPoints;
