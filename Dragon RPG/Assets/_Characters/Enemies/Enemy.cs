@@ -13,14 +13,22 @@ namespace RPG.Characters
     public class Enemy : MonoBehaviour, IDamagable
     {
 
-        [SerializeField] float maxHealthPoints = 100f;
-        [SerializeField] float chaseRadius = 10f;
-        [SerializeField] float attackRadius = 4f;
-        [SerializeField] float secondsBetweenShot = 0.5f;
-        [SerializeField] float damagePerShot = 9f;
-        [SerializeField] GameObject projectileToUse;
-        [SerializeField] GameObject projectileSocket;
-        [SerializeField] Vector3 aimOffset = new Vector3(0, 1f, 0);
+        [SerializeField]
+        float maxHealthPoints = 100f;
+        [SerializeField]
+        float chaseRadius = 10f;
+        [SerializeField]
+        float attackRadius = 4f;
+        [SerializeField]
+        float secondsBetweenShot = 0.5f;
+        [SerializeField]
+        float damagePerShot = 9f;
+        [SerializeField]
+        GameObject projectileToUse;
+        [SerializeField]
+        GameObject projectileSocket;
+        [SerializeField]
+        Vector3 aimOffset = new Vector3(0, 1f, 0);
 
         float currentHealthPoints;
         bool isAttacking = false;
@@ -87,8 +95,8 @@ namespace RPG.Characters
         }
 
         void OnCollisionEnter(Collision other)
-        {   
-            if(player.GetComponentInChildren<CapsuleCollider>() || player.GetComponentInChildren<BoxCollider>()) //TODO change so player colliding doesn't impact health of enemy.
+        {
+            if (player.GetComponentInChildren<CapsuleCollider>() || player.GetComponentInChildren<BoxCollider>()) //TODO change so player colliding doesn't impact health of enemy.
                 TakeDamage(damagePerShot); //TODO change to player damage.
         }
 

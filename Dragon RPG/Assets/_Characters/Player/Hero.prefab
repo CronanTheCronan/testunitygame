@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 114977370746622602}
   - component: {fileID: 114768731841738130}
   - component: {fileID: 114181877441716798}
+  - component: {fileID: 114663335067523474}
   m_Layer: 10
   m_Name: Hero
   m_TagString: Player
@@ -450,15 +451,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1741513634291742}
-  m_LocalRotation: {x: -0, y: -0.99169147, z: -0, w: 0.12863968}
-  m_LocalPosition: {x: -13.06, y: 100, z: -51.47}
+  m_LocalRotation: {x: -0, y: -0.9996047, z: -0, w: 0.02811732}
+  m_LocalPosition: {x: 1.87, y: 100, z: -58.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4494390501221176}
   - {fileID: 4534182475572398}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -166.00601, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -149.082, z: 0}
 --- !u!4 &4629174166205930
 Transform:
   m_ObjectHideFlags: 1
@@ -684,9 +685,24 @@ MonoBehaviour:
   enemyLayer: 9
   maxHealthPoints: 100
   damagePerHit: 10
-  weaponInUse: {fileID: 11400000, guid: 3b6f6a3dbc525ef4d9ec6b10aa4f3075, type: 2}
+  weaponInUse: {fileID: 11400000, guid: 407803874d603a54da4801ad61deb1d2, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: d6b738ef661e1a147a20a1c6e66b9fa6,
     type: 2}
+--- !u!114 &114663335067523474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1741513634291742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9391ac182ede74998c4cba0dbb7637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaBar: {fileID: 114500463143377016, guid: 75a43cca039264395b99698681e52275,
+    type: 2}
+  maxStaminaPoints: 100
+  energyUsed: 10
 --- !u!114 &114768731841738130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -711,7 +727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 2000
   m_StationaryTurnSpeed: 1500
-  m_JumpPower: 3
+  m_JumpPower: 8
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
   m_MoveSpeedMultiplier: 2

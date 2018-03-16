@@ -8,15 +8,19 @@ namespace RPG.Characters
     [RequireComponent(typeof (ThirdPersonCharacter))]
     public class PlayerMovement : MonoBehaviour
     {
+
         Animator animator;
         private ThirdPersonCharacter character; // A reference to the ThirdPersonCharacter on the object
         private Transform mainCamera;                  // A reference to the main camera in the scenes transform
         private Vector3 cameraForwardDirection;             // The current forward direction of the camera
         private Vector3 move;
         private bool jumping;                      // the world-relative desired move direction, calculated from the camForward and user input.
-        private bool attacking;
+        private bool attacking = false;
+        private bool rolling = false;
 
-        
+        public delegate void OnPlayerAttacking(bool attacking); // declare new delegate type
+        public event OnPlayerAttacking notifyPlayerAttackObservers; // instantiate an observer set
+
         private void Start()
         {
             animator = GetComponent<Animator>();
@@ -39,6 +43,14 @@ namespace RPG.Characters
 
         private void Update()
         {
+            
+                
+        }
+
+
+        // Fixed update is called in sync with physics
+        private void FixedUpdate()
+        {
             float triggerAxis = Input.GetAxisRaw("XBox_Triggers");
             if (!jumping)
             {
@@ -52,14 +64,14 @@ namespace RPG.Characters
             {
                 attacking = true;
                 animator.SetTrigger("Attack");
+                NotifyPlayerAttackObservers(attacking);
             }
-                
-        }
 
+            if(!rolling && !attacking && Input.GetButtonDown("XBox_B_Button"))
+            {
+                Roll();
+            }
 
-        // Fixed update is called in sync with physics
-        private void FixedUpdate()
-        {
             // read inputs
             float h = Input.GetAxis("Horizontal");
             float v = Input.GetAxis("Vertical");
@@ -79,12 +91,26 @@ namespace RPG.Characters
             }
 
 			// walk speed multiplier
-	        //if (Input.GetKey(KeyCode.LeftShift)) move *= .5f;
+	        //if (Input.GetButton("XBox_LStick_Click")) move *= 10f;
 
 
             // pass all parameters to the character control script
             character.Move(move, crouch, jumping);
             jumping = false;
+
+        }
+
+        void NotifyPlayerAttackObservers(bool attackStatus)
+        {
+            if (attacking)
+                notifyPlayerAttackObservers(true);
+        }
+
+        void Roll()
+        {
+            rolling = true;
+            animator.SetTrigger("Rolling");
+            rolling = false;
         }
     }
 }

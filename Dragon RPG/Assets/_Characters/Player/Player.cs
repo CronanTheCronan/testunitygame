@@ -31,7 +31,6 @@ namespace RPG.Characters
 
         void Start()
         {
-            RegisterForMouseClick();
             SetCurrentMaxHealth();
             PutWeaponInHand();
             SetupRuntimeAnimator();
@@ -70,22 +69,6 @@ namespace RPG.Characters
             Assert.IsFalse(numberOfDominantHands <= 0, "No dominant hand found on player, please add one.");
             Assert.IsFalse(numberOfDominantHands > 1, "Multiple dominant hand scripts found, please remove until only 1");
             return dominantHands[0].gameObject;
-        }
-
-        private void RegisterForMouseClick()
-        {
-            cameraRaycaster = FindObjectOfType<CameraRaycaster>();
-            cameraRaycaster.notifyMouseClickObservers += OnMouseClick;
-        }
-
-        void OnMouseClick(RaycastHit raycastHit, int layerHit)
-        {
-            if (layerHit == enemyLayer)
-            {
-                var enemy = raycastHit.collider.gameObject;
-                if (TargetInRange(enemy))
-                    AttackTarget(enemy);
-            }
         }
 
         public void AttackTarget(GameObject target)
