@@ -17,7 +17,7 @@ namespace RPG.Characters
     public abstract class SpecialAbility : ScriptableObject
     {
         [Header("Special Ability General")]
-        [SerializeField] float energyCost = 10f;
+        [SerializeField] float staminaCost = 10f;
 
         protected ISpecialAbility behavior;
 
@@ -28,6 +28,10 @@ namespace RPG.Characters
             behavior.Use(useParams);
         }
 
+        public float GetStaminaCost()
+        {
+            return staminaCost;
+        }
     }
 
     public interface ISpecialAbility

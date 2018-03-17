@@ -1,11 +1,10 @@
 ﻿using System;
 using UnityEngine;
-using UnityStandardAssets.Characters.ThirdPerson;
 using UnityStandardAssets.CrossPlatformInput;
 
 namespace RPG.Characters
 {
-    [RequireComponent(typeof (ThirdPersonCharacter))]
+    [RequireComponent(typeof(ThirdPersonCharacter))]
     public class PlayerMovement : MonoBehaviour
     {
 
@@ -14,15 +13,14 @@ namespace RPG.Characters
         private Transform mainCamera;                  // A reference to the main camera in the scenes transform
         private Vector3 cameraForwardDirection;             // The current forward direction of the camera
         private Vector3 move;
-        private bool idle;
-        private bool jumping = false;                      // the world-relative desired move direction, calculated from the camForward and user input.
-        public bool attacking = false;
+        private bool jumping;                      // the world-relative desired move direction, calculated from the camForward and user input.
+        private bool attacking = false;
         private bool rolling = false;
-        private float triggerAxis;
         private float baseDamage = 10f;
 
-        //Temp for debugging
+        //Temp for debug
         [SerializeField] SpecialAbility[] abilities;
+
 
         public bool Attacking { get { return attacking; } }
 
@@ -47,30 +45,28 @@ namespace RPG.Characters
 
             // get the third person character ( this should never be null due to require component )
             character = GetComponent<ThirdPersonCharacter>();
-            
         }
 
         // Fixed update is called in sync with physics
         private void FixedUpdate()
         {
-            triggerAxis = Input.GetAxisRaw("XBox_Triggers");
-
-            if(Input.GetButtonDown("XBox_A_Button"))
+            float triggerAxis = Input.GetAxisRaw("XBox_Triggers");
+            if (!jumping)
             {
-                jumping = true;
-                //.SetBool
+                jumping = Input.GetButtonDown("XBox_A_Button");
             }
 
-            if (!attacking && !rolling && !jumping && triggerAxis < 0)
+            if (triggerAxis == 0)
+                attacking = false;
+
+            if (!attacking && !jumping && triggerAxis < 0)
             {
                 PlayerBasicAttack();
             }
 
-            if (!attacking && !rolling && !jumping && Input.GetButtonDown("XBox_LBumper"))
+            if(!attacking && !jumping && !rolling && Input.GetButtonDown("XBox_RBumper"))
             {
-                attacking = true;
                 AttemptSpecialAbility(0);
-                attacking = false;
             }
 
             if (!rolling && !attacking && Input.GetButtonDown("XBox_B_Button"))
@@ -88,12 +84,12 @@ namespace RPG.Characters
             {
                 // calculate camera relative direction to move:
                 cameraForwardDirection = Vector3.Scale(mainCamera.forward, new Vector3(1, 0, 1)).normalized;
-                move = v*cameraForwardDirection + h*mainCamera.right;
+                move = v * cameraForwardDirection + h * mainCamera.right;
             }
             else
             {
                 // we use world-relative directions in the case of no main camera
-                move = v*Vector3.forward + h*Vector3.right;
+                move = v * Vector3.forward + h * Vector3.right;
             }
 
 
@@ -106,9 +102,11 @@ namespace RPG.Characters
         private void AttemptSpecialAbility(int abilityIndex)
         {
             var stamina = GetComponent<Stamina>();
+            var staminaCost = abilities[abilityIndex].GetStaminaCost();
+
             if (stamina.IsStaminaAvailable(10f))
             {
-                stamina.ConsumeEnergy(10f);
+                stamina.ConsumeEnergy(staminaCost);
                 var abilityParams = new AbilityUseParams(baseDamage);
                 abilities[abilityIndex].Use(abilityParams);
             }
@@ -116,28 +114,20 @@ namespace RPG.Characters
 
         private void PlayerBasicAttack()
         {
-            var stamina = GetComponent<Stamina>();
-
             attacking = true;
             animator.SetTrigger("Attack");
-            NotifyPlayerAttackObservers(attacking);
 
+            var stamina = GetComponent<Stamina>();
             if (stamina.IsStaminaAvailable(10f))
             {
                 stamina.ConsumeEnergy(10f);
             }
-
-            attacking = false;
-            NotifyPlayerAttackObservers(attacking);
         }
-
 
         void NotifyPlayerAttackObservers(bool attackStatus)
         {
             if (attacking)
                 notifyPlayerAttackObservers(true);
-            else if (!attacking)
-                notifyPlayerAttackObservers(false);
         }
 
         void Roll()
@@ -148,4 +138,3 @@ namespace RPG.Characters
         }
     }
 }
-

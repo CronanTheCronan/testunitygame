@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.AI;
-using UnityStandardAssets.Characters.ThirdPerson;
+﻿using UnityEngine.AI;
 using UnityEngine;
-using System;
+
 
 namespace RPG.Levels
 {
@@ -12,17 +9,20 @@ namespace RPG.Levels
         [SerializeField] float giantTargetRadius = 5.0f;
         [SerializeField] bool hasReachedGoal = false;
         GameObject giantTargetEnd = null;
+        GameObject giant;
         NavMeshAgent agent;
 
         // Use this for initialization
         void Start()
         {
+            giant = this.gameObject;
             giantTargetEnd = GameObject.FindGameObjectWithTag("GiantTarget");
             agent = GetComponent<NavMeshAgent>();
         }
 
         void Update()
         {
+            giant.transform.LookAt(giantTargetEnd.transform.position);
             if (!hasReachedGoal)
             {
                 GiantMoving();

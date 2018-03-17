@@ -12,7 +12,7 @@ using RPG.Weapons;
 
 namespace RPG.Characters
 {
-    public class Player : MonoBehaviour, IDamagable
+    public class Player : MonoBehaviour, IDamageable
     {
 
         [SerializeField] float maxHealthPoints = 100f;

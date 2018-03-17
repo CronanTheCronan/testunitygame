@@ -2322,8 +2322,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1039809858764050}
-  m_LocalRotation: {x: -0, y: -0.96382266, z: -0, w: 0.26654446}
-  m_LocalPosition: {x: 32.216476, y: 0, z: 34.537537}
+  m_LocalRotation: {x: -0, y: -0.9996047, z: -0, w: 0.02811732}
+  m_LocalPosition: {x: -0.255, y: 100.114, z: -42.398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4005524458805510}
@@ -2585,6 +2585,7 @@ MonoBehaviour:
     type: 2}
   projectileSocket: {fileID: 1777577892956184}
   aimOffset: {x: 0, y: 1, z: 0}
+  isPlayerAttacking: 0
 --- !u!114 &114496587058656936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2616,7 +2617,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1039809858764050}
-  m_Material: {fileID: 13400000, guid: e52fb17f9b1e7fd48b8955f1391d3688, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3
@@ -2805,9 +2806,9 @@ NavMeshAgent:
   m_GameObject: {fileID: 1039809858764050}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 7
-  m_Acceleration: 8
+  m_Radius: 0.4
+  m_Speed: 3
+  m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 1.5

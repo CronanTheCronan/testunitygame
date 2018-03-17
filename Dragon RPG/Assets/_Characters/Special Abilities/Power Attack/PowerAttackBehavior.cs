@@ -28,8 +28,8 @@ namespace RPG.Characters
 
         public void Use(AbilityUseParams useParams)
         {
-            print("Power attack used, extra damage: " + config.GetExtraDamage());
-            print("Base damage: " + useParams.baseDamage);
+            print("Power attack used by: " + gameObject.name);
+            float damageToDeal = useParams.baseDamage + config.GetExtraDamage();
         }
     }
 

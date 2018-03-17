@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.Characters.ThirdPerson;
 
 // TODO consider re-wire
 using RPG.Core;
@@ -10,9 +9,9 @@ using RPG.Weapons;
 
 namespace RPG.Characters
 {
-    public class Enemy : MonoBehaviour, IDamagable
+    public class Enemy : MonoBehaviour, IDamageable
     {
-
+         
         [SerializeField] float maxHealthPoints = 100f;
         [SerializeField] float chaseRadius = 10f;
         [SerializeField] float attackRadius = 4f;
@@ -30,8 +29,6 @@ namespace RPG.Characters
         GameObject player = null;
         CapsuleCollider capsuleCollider;
         Weapon weapon;
-
-        Component playerMovement;
         [SerializeField] bool isPlayerAttacking;
 
         void Start()

@@ -45,10 +45,10 @@ namespace RPG.Weapons
 
         private void DamageIfDamageable(Collision collision)
         {
-            Component damageableComponent = collision.gameObject.GetComponent(typeof(IDamagable));
+            Component damageableComponent = collision.gameObject.GetComponent(typeof(IDamageable));
             if (damageableComponent)
             {
-                (damageableComponent as IDamagable).TakeDamage(damageCaused);
+                (damageableComponent as IDamageable).TakeDamage(damageCaused);
             }
             Destroy(gameObject, DESTROY_DELAY);
         }

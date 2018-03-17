@@ -10,21 +10,33 @@ namespace RPG.Characters
     {
         [SerializeField] RawImage staminaBar;
         [SerializeField] float maxStaminaPoints = 100f;
+        [SerializeField] float regenPointsPerSeconds = 1f;
 
+        public float currentStaminaPoints;
 
-        PlayerMovement playerMovement;
-
-        float currentStaminaPoints;
-
-        // Use this for initialization
         void Start()
         {
             currentStaminaPoints = maxStaminaPoints;
         }
 
+        void Update()
+        {
+            if(currentStaminaPoints < maxStaminaPoints)
+            {
+                AddStaminaPoints();
+                UpdateStaminaBar();
+            }
+        }
+
+        private void AddStaminaPoints()
+        {
+            var pointsToAdd = regenPointsPerSeconds * Time.deltaTime;
+            currentStaminaPoints = Mathf.Clamp(currentStaminaPoints + pointsToAdd, 0, maxStaminaPoints);
+        }
+
         public bool IsStaminaAvailable(float amount)
         {
-            return amount < currentStaminaPoints;
+            return amount <= currentStaminaPoints;
         }
 
         public void ConsumeEnergy(float amount)

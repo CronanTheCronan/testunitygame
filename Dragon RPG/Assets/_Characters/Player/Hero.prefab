@@ -697,8 +697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2240f80111d773241890d2dffe81464a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attacking: 0
   abilities:
+  - {fileID: 11400000, guid: 9e03234323bddf141b4a01363382db5f, type: 2}
   - {fileID: 11400000, guid: 578494049022d324f92a8f5fce2d5026, type: 2}
 --- !u!114 &114663335067523474
 MonoBehaviour:
