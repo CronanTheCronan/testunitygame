@@ -8,11 +8,12 @@ namespace RPG.Characters
 {
     public class Stamina : MonoBehaviour
     {
-        [SerializeField] RawImage staminaBar;
         [SerializeField] float maxStaminaPoints = 100f;
         [SerializeField] float regenPointsPerSeconds = 1f;
 
-        public float currentStaminaPoints;
+        float currentStaminaPoints;
+
+        public float staminaAsPercentage { get { return currentStaminaPoints / maxStaminaPoints; } }
 
         void Start()
         {
@@ -24,7 +25,6 @@ namespace RPG.Characters
             if(currentStaminaPoints < maxStaminaPoints)
             {
                 AddStaminaPoints();
-                UpdateStaminaBar();
             }
         }
 
@@ -43,14 +43,6 @@ namespace RPG.Characters
         {
             float newStaminaPoints = currentStaminaPoints - amount;
             currentStaminaPoints = Mathf.Clamp(newStaminaPoints, 0, maxStaminaPoints);
-            UpdateStaminaBar();
-        }
-
-        private void UpdateStaminaBar()
-        {
-            // TODO remove magic numbers;
-            float xValue = -(StaminaAsPercent() / 2f) - 0.5f;
-            staminaBar.uvRect = new Rect(xValue, 0f, 0.5f, 1f);
         }
 
         private float StaminaAsPercent()

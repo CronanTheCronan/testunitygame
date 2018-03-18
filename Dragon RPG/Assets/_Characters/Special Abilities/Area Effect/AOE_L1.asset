@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34fe2f616c51af43941e125b65301f1, type: 3}
+  m_Name: AOE_L1
+  m_EditorClassIdentifier: 
+  staminaCost: 50
+  particlePrefab: {fileID: 1715675460628954, guid: 7f663908b24a5fc40b7b89f880c603ad,
+    type: 2}
+  specialEffectClip: {fileID: 8300000, guid: 35fbad8cdde724f11ba6481f1e64af71, type: 3}
+  radius: 5
+  damageToEachTarget: 15

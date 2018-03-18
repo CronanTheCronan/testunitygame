@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 
 // TODO consider rewiring
 using RPG.CameraUI;
@@ -16,26 +17,64 @@ namespace RPG.Characters
     {
 
         [SerializeField] float maxHealthPoints = 100f;
-        //[SerializeField] float damagePerHit = 10f;
         [SerializeField] Weapon weaponInUse;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
+        [SerializeField] AudioClip[] damageSounds;
+        [SerializeField] AudioClip[] deathSounds;
 
+        public AbilityConfig[] abilities;
+
+        AudioSource audioSource;
         Animator animator;
-        //CameraRaycaster cameraRaycaster = null;
+
+        const string DEATH_TRIGGER = "Death";
+
         float currentHealthPoints;
 
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
         void Start()
         {
+            audioSource = GetComponent<AudioSource>();
+
             SetCurrentMaxHealth();
             PutWeaponInHand();
             SetupRuntimeAnimator();
+            AttachInitialAbilities();
         }
 
         public void TakeDamage(float damage)
         {
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
+            audioSource.clip = damageSounds[UnityEngine.Random.Range(0, damageSounds.Length)];
+            audioSource.Play();
+
+            if (currentHealthPoints <= 0)
+            {
+                StartCoroutine(KillPlayer());
+            }
+        }
+
+        public void Heal(float points)
+        {
+            currentHealthPoints = Mathf.Clamp(currentHealthPoints + points, 0f, maxHealthPoints);
+        }
+
+        public void AttachInitialAbilities()
+        {
+            for (int i = 0; i < abilities.Length; i++)
+            {
+                abilities[i].AddComponent(gameObject);
+            }
+        }
+
+        IEnumerator KillPlayer()
+        {
+            audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
+            audioSource.Play();
+            animator.SetTrigger(DEATH_TRIGGER);
+            yield return new WaitForSecondsRealtime(audioSource.clip.length + 1f); 
+            SceneManager.LoadScene(0);
         }
 
         private void SetCurrentMaxHealth()
@@ -67,11 +106,5 @@ namespace RPG.Characters
             Assert.IsFalse(numberOfDominantHands > 1, "Multiple dominant hand scripts found, please remove until only 1");
             return dominantHands[0].gameObject;
         }
-
-        //bool TargetInRange(GameObject target)
-        //{
-        //    float distanceToTarget = (target.transform.position - transform.position).magnitude;
-        //    return distanceToTarget <= weaponInUse.GetMaxAttackRange();
-        //}
     }
 }

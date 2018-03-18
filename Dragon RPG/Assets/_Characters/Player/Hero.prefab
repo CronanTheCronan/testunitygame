@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 95252478882102994}
   - component: {fileID: 54246337930177332}
   - component: {fileID: 136974799109618272}
+  - component: {fileID: 82322509636616270}
   - component: {fileID: 114977370746622602}
   - component: {fileID: 114181877441716798}
   - component: {fileID: 114282519617090714}
@@ -643,6 +644,86 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!82 &82322509636616270
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1741513634291742}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95252478882102994
 Animator:
   serializedVersion: 3
@@ -686,6 +767,17 @@ MonoBehaviour:
   weaponInUse: {fileID: 11400000, guid: 407803874d603a54da4801ad61deb1d2, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: d6b738ef661e1a147a20a1c6e66b9fa6,
     type: 2}
+  damageSounds:
+  - {fileID: 8300000, guid: acd1b94137e4a8e4b8adf5afebc0e23e, type: 3}
+  - {fileID: 8300000, guid: d65403984187b4a4db04ed501fefa204, type: 3}
+  - {fileID: 8300000, guid: 97dbc4a7a9ab1eb47924d0dc5803a009, type: 3}
+  - {fileID: 8300000, guid: 97b61bad068fb6b42b4c2652df1a6f96, type: 3}
+  - {fileID: 8300000, guid: f6193e051557b4b4da151ae91efa2a99, type: 3}
+  - {fileID: 8300000, guid: 929e4c6b7f36f9d418264dff21ca0636, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: 92f6c721ac00f4341a458682629eed00, type: 3}
+  - {fileID: 8300000, guid: 3c6dbef984921ae4cb21937f22f2d913, type: 3}
+  - {fileID: 8300000, guid: 5171269d6d5e73b4eac7aa121d219780, type: 3}
 --- !u!114 &114282519617090714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -713,6 +805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaBar: {fileID: 0}
   maxStaminaPoints: 100
+  regenPointsPerSeconds: 5
 --- !u!114 &114977370746622602
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 // TODO consider re-wire
 using RPG.Core;
@@ -15,27 +12,27 @@ namespace RPG.Characters
         [SerializeField] float maxHealthPoints = 100f;
         [SerializeField] float chaseRadius = 10f;
         [SerializeField] float attackRadius = 4f;
-        [SerializeField] float secondsBetweenShot = 0.5f;
+        [SerializeField] float firingPeriodInSeconds = 0.5f;
+        [SerializeField] float firingPeriodVariation = 0.1f;
         [SerializeField] float damagePerShot = 9f;
+        [SerializeField] bool isPlayerAttacking;
         [SerializeField] GameObject projectileToUse;
         [SerializeField] GameObject projectileSocket;
         [SerializeField] Vector3 aimOffset = new Vector3(0, 1f, 0);
 
-        float playerDamage = 10f;
+        AICharacterControl aiCharacterControl = null;
+        Player player = null;
+        CapsuleCollider capsuleCollider = null;
+        Weapon weapon;
 
+        float playerDamage = 10f;
         float currentHealthPoints;
         bool isAttacking = false;
-        AICharacterControl aiCharacterControl = null;
-        GameObject player = null;
-        CapsuleCollider capsuleCollider;
-        Weapon weapon;
-        [SerializeField] bool isPlayerAttacking;
-
+        
+        
         void Start()
         {
-            player = GameObject.FindGameObjectWithTag("Player");
-            player.GetComponent<PlayerMovement>().notifyPlayerAttackObservers += PlayerIsAttacking;
-            //player.GetComponent<PlayerMovement>().notifyPlayerIdleObservers += PlayerIsIdle;
+            player = FindObjectOfType<Player>();
 
             aiCharacterControl = GetComponent<AICharacterControl>();
             currentHealthPoints = maxHealthPoints;
@@ -43,6 +40,12 @@ namespace RPG.Characters
 
         void Update()
         {
+            if(player.healthAsPercentage <= Mathf.Epsilon)
+            {
+                StopAllCoroutines();
+                Destroy(this);
+            }
+
             float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
             if (distanceToPlayer <= chaseRadius)
@@ -57,7 +60,8 @@ namespace RPG.Characters
             if (distanceToPlayer <= attackRadius && !isAttacking)
             {
                 isAttacking = true;
-                InvokeRepeating("FireProjectile", 0f, secondsBetweenShot);  // TODO switch to coroutines
+                float randomizedDelay = Random.Range(firingPeriodInSeconds - firingPeriodVariation, firingPeriodInSeconds + firingPeriodVariation);
+                InvokeRepeating("FireProjectile", 0f, randomizedDelay);  // TODO switch to coroutines
             }
             else if (distanceToPlayer >= attackRadius && isAttacking)
             {
@@ -87,30 +91,10 @@ namespace RPG.Characters
             if (currentHealthPoints <= 0) { Destroy(gameObject); }
         }
 
-        //void PlayerIsIdle(bool idleStatus)
-        //{
-        //    if (idleStatus)
-        //    {
-        //        isPlayerAttacking = false;
-        //    }
-        //}
-
-        void PlayerIsAttacking(bool attackStatus)
-        {
-            if (attackStatus)
-            {
-                isPlayerAttacking = true;
-            }
-        }
-
         void OnTriggerEnter(Collider other)
         {
-            //isPlayerAttacking = player.gameObject.GetComponent<PlayerMovement>().Attacking;
-            if (isPlayerAttacking)
-            {
-                print("I hit you for " + playerDamage + " dps");
-                TakeDamage(playerDamage);
-            }
+            if(player.GetComponent<PlayerMovement>().attacking)
+                TakeDamage(20f);
         }
 
         void OnDrawGizmos()
