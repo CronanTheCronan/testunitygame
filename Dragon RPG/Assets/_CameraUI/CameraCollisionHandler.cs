@@ -10,26 +10,26 @@ public class CameraCollisionHandler : MonoBehaviour {
     [HideInInspector] public Vector3[] adjustedCameraClipPoints;
     [HideInInspector] public Vector3[] desiredCameraClipPoints;
 
-    Camera camera;
+    Camera myCamera;
 
     public void Initialize(Camera cam)
     {
-        camera = cam;
+        myCamera = cam;
         adjustedCameraClipPoints = new Vector3[5];
         desiredCameraClipPoints = new Vector3[5];
     }
 
     public void UpdateCameraClipPoints(Vector3 camPosition, Quaternion atRotation, ref Vector3[] intoArray)
     {
-        if (!camera)
+        if (!myCamera)
             return;
 
         //clear array
         intoArray = new Vector3[5];
 
-        float z = camera.nearClipPlane;
-        float x = Mathf.Tan(camera.fieldOfView / 3.41f) * z; //modify to increase or decrease camera collision space
-        float y = x / camera.aspect;
+        float z = myCamera.nearClipPlane;
+        float x = Mathf.Tan(myCamera.fieldOfView / 3.41f) * z; //modify to increase or decrease camera collision space
+        float y = x / myCamera.aspect;
 
         //top left
         intoArray[0] = (atRotation * new Vector3(-x, y, z)) + camPosition;
@@ -44,7 +44,7 @@ public class CameraCollisionHandler : MonoBehaviour {
         intoArray[3] = (atRotation * new Vector3(-x, -y, z)) + camPosition;
 
         //camera position
-        intoArray[4] = camPosition - camera.transform.forward;
+        intoArray[4] = camPosition - myCamera.transform.forward;
     }
 
     bool CollisionDetectedAtClipPoints(Vector3[] clipPoints, Vector3 fromPosition)

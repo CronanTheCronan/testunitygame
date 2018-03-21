@@ -22,10 +22,7 @@ namespace RPG.Characters
 
         AICharacterControl aiCharacterControl = null;
         Player player = null;
-        CapsuleCollider capsuleCollider = null;
-        Weapon weapon;
 
-        float playerDamage = 10f;
         float currentHealthPoints;
         bool isAttacking = false;
         
@@ -93,8 +90,10 @@ namespace RPG.Characters
 
         void OnTriggerEnter(Collider other)
         {
-            if(player.GetComponent<PlayerMovement>().attacking)
-                TakeDamage(20f);
+            if (player.GetComponent<PlayerMovement>().attacking)
+            {
+                TakeDamage(player.CalculateAttackDamage());
+            }
         }
 
         void OnDrawGizmos()

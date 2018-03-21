@@ -17,7 +17,7 @@ namespace RPG.Weapons
         [SerializeField] float maxAttackRange = 2f;
         [SerializeField] float additionalDamage = 10f;
 
-        public float GetAddinalDamage()
+        public float GetAdditionalDamage()
         {
             return additionalDamage;
         }

@@ -21,7 +21,7 @@ namespace RPG.CameraUI
         [SerializeField] float distanceMax = 15f;
 
         Cursor cursor;
-        Rigidbody rigidbody;
+        Rigidbody playerRigidbody;
 
         float x = 0.0f;
         float y = 0.0f;
@@ -34,12 +34,12 @@ namespace RPG.CameraUI
             x = angles.y;
             y = angles.x;
 
-            rigidbody = GetComponent<Rigidbody>();
+            playerRigidbody = GetComponent<Rigidbody>();
 
             // Make the rigid body not change rotation
-            if (rigidbody != null)
+            if (playerRigidbody != null)
             {
-                rigidbody.freezeRotation = true;
+                playerRigidbody.freezeRotation = true;
             }
         }
 

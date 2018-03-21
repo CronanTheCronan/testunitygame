@@ -21,16 +21,23 @@ namespace RPG.Characters
         [SerializeField] AnimatorOverrideController animatorOverrideController;
         [SerializeField] AudioClip[] damageSounds;
         [SerializeField] AudioClip[] deathSounds;
+        [Range(.1f, 1f)] [SerializeField] float criticalHitChance = 0.1f;
+        [SerializeField] float criticalHitMultiplier = 1.25f;
+        [SerializeField] ParticleSystem criticalHitParticleSystem;
 
         public AbilityConfig[] abilities;
 
+        
         AudioSource audioSource;
         Animator animator;
 
         const string DEATH_TRIGGER = "Death";
 
-        float currentHealthPoints;
+        private float currentHealthPoints;
+        private float baseDamage = 10f;
 
+        public float GetBaseDamage() { return baseDamage; }
+        public float GetAdditionalDamage() { return weaponInUse.GetAdditionalDamage(); }
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
         void Start()
@@ -65,6 +72,22 @@ namespace RPG.Characters
             for (int i = 0; i < abilities.Length; i++)
             {
                 abilities[i].AddComponent(gameObject);
+            }
+        }
+
+        public float CalculateAttackDamage()
+        {
+            bool isCriticalHit = UnityEngine.Random.Range(0f, 1f) <= criticalHitChance;
+            float damageBeforeCritical = GetBaseDamage() + GetAdditionalDamage();
+
+            if (isCriticalHit)
+            {
+                criticalHitParticleSystem.Play();
+                return damageBeforeCritical * criticalHitMultiplier;
+            }
+            else
+            {
+                return damageBeforeCritical;
             }
         }
 

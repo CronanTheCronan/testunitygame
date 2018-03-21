@@ -13,7 +13,6 @@ namespace RPG.Characters
         AudioSource audioSource;
         Animator animator;
         Player player;
-        Enemy enemy;
 
         
         private ThirdPersonCharacter character; // A reference to the ThirdPersonCharacter on the object
@@ -23,10 +22,9 @@ namespace RPG.Characters
         private bool jumping;                      // the world-relative desired move direction, calculated from the camForward and user input.
         public bool attacking = false;
         private bool rolling = false;
-        private float baseDamage = 10f;
-        private bool playerIdle = false;
+        //private bool playerIdle = false;
         private float attackDuration;
-        private bool isPlayerAlive = true;
+        //private bool isPlayerAlive = true;
 
         //Temp for debug
         //[SerializeField] SpecialAbility[] abilities;
@@ -40,7 +38,7 @@ namespace RPG.Characters
         private void Start()
         {
             player = GetComponent<Player>();
-            enemy = FindObjectOfType<Enemy>();
+
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
             character = GetComponent<ThirdPersonCharacter>();
@@ -62,7 +60,7 @@ namespace RPG.Characters
         { 
             if(!attacking && !jumping && !rolling)
             {
-                playerIdle = true;
+                //playerIdle = true;
             }
 
             if(!attacking && Input.GetButtonDown("XBox_RBumper"))
@@ -72,7 +70,7 @@ namespace RPG.Characters
 
             if(player.healthAsPercentage > Mathf.Epsilon)
             {
-                isPlayerAlive = true;
+                //isPlayerAlive = true;
                 //ScanForButtonDown();
             }
         }
@@ -88,7 +86,7 @@ namespace RPG.Characters
 
         IEnumerator DisableDamage()
         {
-            yield return new WaitForSecondsRealtime(.4f);
+            yield return new WaitForSecondsRealtime(1f); // TODO change to attack duration and move attack duration to weapon based on specific animation
             attacking = false;
         }
 
@@ -101,7 +99,7 @@ namespace RPG.Characters
         // Fixed update is called in sync with physics
         private void FixedUpdate()
         {
-            float triggerAxis = Input.GetAxisRaw("XBox_Triggers");
+            //float triggerAxis = Input.GetAxisRaw("XBox_Triggers");
             
             // read inputs
             float h = Input.GetAxis("Horizontal");
@@ -138,8 +136,7 @@ namespace RPG.Characters
 
             if(!attacking && !jumping && !rolling && Input.GetButtonDown("XBox_LBumper"))
             {
-                print("button pressed");
-                AttemptSpecialAbility(0);
+                AttemptSpecialAbility(1);
             }
 
             if (!rolling && !attacking && Input.GetButtonDown("XBox_B_Button"))
@@ -149,14 +146,6 @@ namespace RPG.Characters
 
         }
 
-        //void OnTriggerEnter(Collider other)
-        //{
-        //    if(attacking && other.tag == "Enemy")
-        //    {
-        //        enemy.TakeDamage(this.baseDamage);
-        //    }
-        //}
-
         private void AttemptSpecialAbility(int abilityIndex)
         {
             var stamina = GetComponent<Stamina>();
@@ -165,7 +154,7 @@ namespace RPG.Characters
             if (stamina.IsStaminaAvailable(10f))
             {
                 stamina.ConsumeEnergy(staminaCost);
-                var abilityParams = new AbilityUseParams(baseDamage);
+                var abilityParams = new AbilityUseParams(player.GetBaseDamage());
                 player.abilities[abilityIndex].Use(abilityParams);
             }
         }
