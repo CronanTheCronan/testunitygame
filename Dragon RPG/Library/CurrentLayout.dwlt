@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 998
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 681, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 59
+  controlID: 11
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 60
+  controlID: 12
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 221}
   m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
-  controlID: 54
+  controlID: 13
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -264,7 +264,7 @@ MonoBehaviour:
   - {fileID: 21}
   - {fileID: 22}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 2
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -398,9 +398,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 0c430000
-    m_LastClickedID: 0
-    m_ExpandedIDs: 9ac6fcffe427ffff62c8ffff32ceffff4aceffff52ceffff60ceffff68ceffffa8ceffffeeceffff0acfffff0ccfffffbef0ffff9efbffff00000000
+    m_SelectedIDs: 6cf4ffff
+    m_LastClickedID: -2964
+    m_ExpandedIDs: 46a7ffff8af3ffffa2f3ffffaaf3ffffb8f3ffffc0f3ffff00f4ffff18f4ffff46f4ffff6af4ffff6cf4ffff98fbffff000000001a590000ec590000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -451,14 +451,14 @@ MonoBehaviour:
     height: 536
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 6070.345724049285
+  lastFramingTime: 501.42241951672514
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.40548694, y: 3.2022402, z: -2.1207085}
+    m_Target: {x: 1.1285882, y: 0.7322662, z: 1.2363604}
     speed: 2
-    m_Value: {x: -0.40548694, y: 3.2022402, z: -2.1207085}
+    m_Value: {x: 1.1285882, y: 0.7322662, z: 1.2363604}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -482,13 +482,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.21118024, y: 0.123004675, z: -0.026797896, w: -0.9693063}
+    m_Target: {x: -0.3011438, y: 0.4856594, z: -0.18281172, w: -0.80001706}
     speed: 2
-    m_Value: {x: -0.21118024, y: 0.123004675, z: -0.026797896, w: -0.9693063}
+    m_Value: {x: -0.3011438, y: 0.4856594, z: -0.18281172, w: -0.80001706}
   m_Size:
-    m_Target: 3.9578588
+    m_Target: 3.9578586
     speed: 2
-    m_Value: 3.9578588
+    m_Value: 3.9578586
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -616,19 +616,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/_Characters/Special Abilities/Self Heal
+    - Assets/_Characters/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/_Characters/Special Abilities/Self Heal
+  - Assets/_Characters/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\mcronan\Documents\GitHub\testunitygame\Dragon RPG
   m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 115}
-    m_SelectedIDs: 382c0000
-    m_LastClickedID: 11320
-    m_ExpandedIDs: 0000000048280000ce280000602b0000842b0000a22f0000ae33000096350000e23b00006a3f0000da400000e840000042410000324200005e4200008c420000a6430000484d00004650000054500000465500001e5b0000205b0000225b0000245b0000265b0000285b00002a5b00002c5b00002e5b0000305b0000325b0000345b0000365b0000385b00003a5b00003c5b00003e5b0000405b0000425b0000445b0000465b0000485b00004a5b00004c5b00004e5b0000505b0000525b0000545b0000565b0000585b00005a5b000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 83}
+    m_SelectedIDs: cc2f0000
+    m_LastClickedID: 12236
+    m_ExpandedIDs: 000000004e280000d4280000722b0000d22f0000ec330000e6350000483c00008e3e0000de3f00005441000062410000c0410000ba420000e6420000144300002e4400008a4400000e4e000024510000325100004056000034580000d8600000da600000dc600000de600000e0600000e2600000e4600000e6600000e8600000ea600000ec600000ee600000f0600000f2600000f4600000f6600000f8600000fa600000fc600000fe60000000610000026100000461000006610000086100000a6100000c6100000e61000010610000126100001461000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -656,7 +656,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000048280000ce2800009c290000602b0000842b0000a22f000026300000ae3300009635000040360000e23b00006a3f0000da400000e840000042410000324200005e4200008c420000a6430000484d0000465000005450000046550000325700001e5b0000205b0000225b0000245b0000265b0000285b00002a5b00002c5b00002e5b0000305b0000325b0000345b0000365b0000385b00003a5b00003c5b00003e5b0000405b0000425b0000445b0000465b0000485b00004a5b00004c5b00004e5b0000505b0000525b0000545b0000565b0000585b00005a5b0000
+    m_ExpandedIDs: 000000004e280000d4280000722b0000d22f0000ec330000e6350000483c00008e3e0000de3f00005441000062410000c0410000ba420000e6420000144300002e4400008a440000245100003251000040560000d8600000da600000dc600000de600000e0600000e2600000e4600000e6600000e8600000ea600000ec600000ee600000f0600000f2600000f4600000f6600000f8600000fa600000fc600000fe60000000610000026100000461000006610000086100000a6100000c6100000e610000106100001261000014610000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
-    m_CachedPref: 286
+    m_CachedPref: 162
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}

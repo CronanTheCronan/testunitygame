@@ -1355,7 +1355,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1446535677835012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2021, y: 100.052, z: -63.245}
+  m_LocalPosition: {x: 1.5, y: 0, z: 1.327}
   m_LocalScale: {x: 1.6745899, y: 1.6745902, z: 1.6745902}
   m_Children:
   - {fileID: 4787920774209476}
@@ -1696,7 +1696,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealthPoints: 100
-  weaponInUse: {fileID: 11400000, guid: 6e19abef7cf9a784e823e6ba7bf652ae, type: 2}
+  currentWeaponConfig: {fileID: 11400000, guid: 407803874d603a54da4801ad61deb1d2,
+    type: 2}
   animatorOverrideController: {fileID: 22100000, guid: d6b738ef661e1a147a20a1c6e66b9fa6,
     type: 2}
   damageSounds:
@@ -1710,7 +1711,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 92f6c721ac00f4341a458682629eed00, type: 3}
   - {fileID: 8300000, guid: 3c6dbef984921ae4cb21937f22f2d913, type: 3}
   - {fileID: 8300000, guid: 5171269d6d5e73b4eac7aa121d219780, type: 3}
-  criticalHitChance: 0.1
+  criticalHitChance: 1
   criticalHitMultiplier: 1.25
   criticalHitParticleSystem: {fileID: 198864301042560940}
   abilities:
@@ -1728,14 +1729,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 360
-  m_StationaryTurnSpeed: 180
-  m_JumpPower: 8
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 2.25
-  m_AnimSpeedMultiplier: 1.25
-  m_GroundCheckDistance: 0.49
+  movingTurnSpeed: 360
+  stationaryTurnSpeed: 180
+  jumpPower: 12
+  gravityMultiplier: 2
+  runCycleLegOffset: 0.2
+  moveSpeedMultiplier: 2
+  animSpeedMultiplier: 1
+  groundCheckDistance: 0.1
 --- !u!114 &114716585790091776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1747,6 +1748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2240f80111d773241890d2dffe81464a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoppingDistance: 1
   attackSoundClip: {fileID: 8300000, guid: 7bef0064f8567430cac22499c6b93d4f, type: 3}
   attacking: 0
 --- !u!114 &114866359153777932

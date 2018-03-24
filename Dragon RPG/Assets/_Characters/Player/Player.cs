@@ -17,7 +17,7 @@ namespace RPG.Characters
     {
 
         [SerializeField] float maxHealthPoints = 100f;
-        [SerializeField] Weapon weaponInUse;
+        [SerializeField] Weapon currentWeaponConfig;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
         [SerializeField] AudioClip[] damageSounds;
         [SerializeField] AudioClip[] deathSounds;
@@ -30,14 +30,16 @@ namespace RPG.Characters
         
         AudioSource audioSource;
         Animator animator;
+        GameObject weaponObject;
 
         const string DEATH_TRIGGER = "Death";
+        const string DEFAULT_ATTACK = "DEFAULT ATTACK";
 
         private float currentHealthPoints;
         private float baseDamage = 10f;
 
         public float GetBaseDamage() { return baseDamage; }
-        public float GetAdditionalDamage() { return weaponInUse.GetAdditionalDamage(); }
+        public float GetAdditionalDamage() { return currentWeaponConfig.GetAdditionalDamage(); }
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
         void Start()
@@ -45,9 +47,20 @@ namespace RPG.Characters
             audioSource = GetComponent<AudioSource>();
 
             SetCurrentMaxHealth();
-            PutWeaponInHand();
-            SetupRuntimeAnimator();
+            PutWeaponInHand(currentWeaponConfig);
+            //SetAttackAnimation();
             AttachInitialAbilities();
+        }
+
+        public void PutWeaponInHand(Weapon weaponToUse)
+        {
+            currentWeaponConfig = weaponToUse;
+            var weaponPrefab = weaponToUse.GetWeaponPrefab();
+            GameObject dominantHand = RequestDominantHand();
+            Destroy(weaponObject);
+            weaponObject = Instantiate(weaponPrefab, dominantHand.transform);
+            weaponObject.transform.localPosition = currentWeaponConfig.gripTransform.localPosition;
+            weaponObject.transform.localRotation = currentWeaponConfig.gripTransform.localRotation;
         }
 
         public void TakeDamage(float damage)
@@ -71,7 +84,7 @@ namespace RPG.Characters
         {
             for (int i = 0; i < abilities.Length; i++)
             {
-                abilities[i].AddComponent(gameObject);
+                abilities[i].AddAbilityComponent(gameObject);
             }
         }
 
@@ -105,20 +118,11 @@ namespace RPG.Characters
             currentHealthPoints = maxHealthPoints;
         }
 
-        private void SetupRuntimeAnimator()
+        public void SetAttackAnimation()
         {
             animator = GetComponent<Animator>();
             animator.runtimeAnimatorController = animatorOverrideController;
-            animatorOverrideController["DEFAULT ATTACK"] = weaponInUse.GetAttackAnimClip();  // TODO - remove constant
-        }
-
-        private void PutWeaponInHand()
-        {
-            var weaponPrefab = weaponInUse.GetWeaponPrefab();
-            GameObject dominantHand = RequestDominantHand();
-            var weapon = Instantiate(weaponPrefab, dominantHand.transform);
-            weapon.transform.localPosition = weaponInUse.gripTransform.localPosition;
-            weapon.transform.localRotation = weaponInUse.gripTransform.localRotation;
+            animatorOverrideController[DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip();
         }
 
         private GameObject RequestDominantHand()

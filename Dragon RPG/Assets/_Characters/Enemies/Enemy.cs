@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-
-// TODO consider re-wire
 using RPG.Core;
 using RPG.Weapons;
 
@@ -20,7 +18,6 @@ namespace RPG.Characters
         [SerializeField] GameObject projectileSocket;
         [SerializeField] Vector3 aimOffset = new Vector3(0, 1f, 0);
 
-        AICharacterControl aiCharacterControl = null;
         Player player = null;
 
         float currentHealthPoints;
@@ -30,8 +27,6 @@ namespace RPG.Characters
         void Start()
         {
             player = FindObjectOfType<Player>();
-
-            aiCharacterControl = GetComponent<AICharacterControl>();
             currentHealthPoints = maxHealthPoints;
         }
 
@@ -47,11 +42,11 @@ namespace RPG.Characters
 
             if (distanceToPlayer <= chaseRadius)
             {
-                aiCharacterControl.SetTarget(player.transform);
+
             }
             else
             {
-                aiCharacterControl.SetTarget(transform);
+
             }
 
             if (distanceToPlayer <= attackRadius && !isAttacking)
@@ -90,7 +85,7 @@ namespace RPG.Characters
 
         void OnTriggerEnter(Collider other)
         {
-            if (player.GetComponent<PlayerMovement>().attacking)
+            if (player.GetComponent<CharacterMovement>().attacking)
             {
                 TakeDamage(player.CalculateAttackDamage());
             }
