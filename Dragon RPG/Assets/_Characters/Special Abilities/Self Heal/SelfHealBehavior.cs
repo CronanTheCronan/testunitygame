@@ -8,9 +8,8 @@ namespace RPG.Characters
 {
     public class SelfHealBehavior : AbilityBehavior
     {
-        Player player = null;
+        Player player;
 
-        // Use this for initialization
         void Start()
         {
             player = GetComponent<Player>();
@@ -25,7 +24,8 @@ namespace RPG.Characters
 
         private void HealSelf(AbilityUseParams useParams)
         {
-            player.Heal((config as SelfHealConfig).GetExtraHealth());
+            var playerHealth = player.GetComponent<Health>();
+            playerHealth.Heal((config as SelfHealConfig).GetExtraHealth());
         }
     }
 }

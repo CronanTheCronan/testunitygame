@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// TODO remove this class
 namespace RPG.Characters
 {
     public class EnemyHealthBar : MonoBehaviour
@@ -17,11 +18,5 @@ namespace RPG.Characters
             healthBarRawImage = GetComponent<RawImage>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            float xValue = -(enemy.healthAsPercentage / 2f) - 0.5f;
-            healthBarRawImage.uvRect = new Rect(xValue, 5f, 0.5f, 1f);
-        }
     }
 }
