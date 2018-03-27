@@ -69,7 +69,7 @@ namespace RPG.Characters
 
         void OnTriggerEnter(Collider other)
         {
-            if (player.GetComponent<CharacterMovement>().Attacking)
+            if (player.GetComponent<Character>().Attacking)
             {
                 var enemyHealth = enemy.GetComponent<Health>();
                 enemyHealth.TakeDamage(player.CalculateAttackDamage());

@@ -4,15 +4,6 @@ using UnityEngine;
 
 namespace RPG.Characters
 {
-    public struct AbilityUseParams
-    {
-        public float baseDamage;
-
-        public AbilityUseParams(float baseDamage)
-        {
-            this.baseDamage = baseDamage;
-        }
-    }
 
     public abstract class AbilityConfig : ScriptableObject
     {
@@ -32,9 +23,9 @@ namespace RPG.Characters
             behavior = behaviorComponent;
         }
 
-        public void Use(AbilityUseParams useParams)
+        public void Use(GameObject target)
         {
-            behavior.Use(useParams);
+            behavior.Use(target);
         }
 
         public float GetStaminaCost()

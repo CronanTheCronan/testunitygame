@@ -5,12 +5,26 @@ using UnityEngine.SceneManagement;
 
 namespace RPG.Characters
 {
-    public class CharacterMovement : MonoBehaviour
+    [SelectionBase]
+    public class Character : MonoBehaviour
     {
         const float k_Half = 0.5f;
         const string ATTACK_TRIGGER = "Attack";
         const string ROLLING_TRIGGER = "Rolling";
+        const string HORIZONTAL = "Horizontal";
+        const string VERTICAL = "Vertical";
 
+        [Header("Setup Settings")]
+        [SerializeField] RuntimeAnimatorController animatorController;
+        [SerializeField] AnimatorOverrideController animatorOverrideController;
+        [SerializeField] Avatar characterAvatar;
+
+        [Header("Capsule Collider Settings")]
+        [SerializeField] Vector3 colliderCenter = new Vector3(0, 0.54f, 0);
+        [SerializeField] float colliderRadius = 0.26f;
+        [SerializeField] float colliderHeight = 1.07f;
+
+        [Header("Movement Properties")]
         [SerializeField] float stoppingDistance = 1f;
         [SerializeField] AudioClip attackSoundClip;
         [SerializeField] float groundCheckDistance = 0.1f;
@@ -28,7 +42,6 @@ namespace RPG.Characters
         Player player;
         SpecialAbilities specialAbilities;
         Rigidbody playerRigidbody;
-        CapsuleCollider capsule;
         Transform mainCamera;  // A reference to the main camera in the scenes transform
         Vector3 groundNormal;
         Vector3 cameraForwardDirection;             // The current forward direction of the camera
@@ -51,17 +64,30 @@ namespace RPG.Characters
         public delegate void OnPlayerAttacking(bool attacking);
         public event OnPlayerAttacking notifyPlayerAttackObservers;
 
-        private void Start()
+        void Awake()
+        {
+            AddRequiredComponents();
+        }
+
+        private void AddRequiredComponents()
+        {
+            animator = gameObject.AddComponent<Animator>();
+            animator.runtimeAnimatorController = animatorController;
+            animator.avatar = characterAvatar;
+
+            var capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
+            capsuleCollider.radius = colliderRadius;
+            capsuleCollider.center = colliderCenter;
+        }
+
+        void Start()
         {
             player = GetComponent<Player>();
-            animator = GetComponent<Animator>();
+
             audioSource = GetComponent<AudioSource>();
             specialAbilities = GetComponent<SpecialAbilities>();
 
             playerRigidbody = GetComponent<Rigidbody>();
-            capsule = GetComponent<CapsuleCollider>();
-            capsuleHeight = capsule.height;
-            capsuleCenter = capsule.center;
 
             playerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             origGroundCheckDistance = groundCheckDistance;
@@ -84,8 +110,8 @@ namespace RPG.Characters
             //float triggerAxis = Input.GetAxisRaw("XBox_Triggers");
 
             // read inputs
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
+            float h = Input.GetAxis(HORIZONTAL);
+            float v = Input.GetAxis(VERTICAL);
 
             // calculate move direction to pass to character
             if (mainCamera != null)
@@ -110,22 +136,24 @@ namespace RPG.Characters
                 playerIdle = true;
             }
 
-            if (!jumping && !attacking && !rolling)
+            if (playerIdle)
             {
                 jumping = Input.GetButtonDown("XBox_A_Button");
+                rolling = Input.GetButtonDown("XBox_B_Button");
+                attacking = Input.GetButtonDown("XBox_RBumper");
             }
 
-            if (!attacking && !jumping && !rolling && Input.GetButtonDown("XBox_LBumper"))
-            {
-                specialAbilities.AttemptSpecialAbility(1);
-            }
-
-            if (!rolling && !attacking && Input.GetButtonDown("XBox_B_Button"))
+            if(rolling)
             {
                 Roll();
             }
 
-            if (!attacking && Input.GetButtonDown("XBox_RBumper"))
+            if (playerIdle && Input.GetButtonDown("XBox_LBumper"))
+            {
+                specialAbilities.AttemptSpecialAbility(0);
+            }
+
+            if (attacking)
             {
                 AttackTarget();
             }
@@ -166,15 +194,12 @@ namespace RPG.Characters
 
         void Roll()
         {
-            rolling = true;
             animator.SetTrigger(ROLLING_TRIGGER);
-            rolling = false;
         }
 
         void AttackTarget()
         {
             player.SetAttackAnimation();
-            attacking = true;
             audioSource.clip = attackSoundClip;
             audioSource.Play();
             animator.SetTrigger(ATTACK_TRIGGER);
@@ -184,7 +209,6 @@ namespace RPG.Characters
         IEnumerator DisableDamage()
         {
             yield return new WaitForSecondsRealtime(1f); // TODO change to attack duration and move attack duration to weapon based on specific animation
-            attacking = false;
         }
 
 

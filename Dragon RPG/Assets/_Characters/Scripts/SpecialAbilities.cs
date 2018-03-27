@@ -12,7 +12,7 @@ namespace RPG.Characters
         [SerializeField] Image staminaBar;
         [SerializeField] float maxStaminaPoints = 100f;
         [SerializeField] float regenPointsPerSeconds = 1f;
-        // todo add outOfEnergy sound;
+        [SerializeField] AudioClip outOfStamina;
 
         float currentStaminaPoints;
         AudioSource audioSource;
@@ -74,20 +74,19 @@ namespace RPG.Characters
             }
         }
 
-        public void AttemptSpecialAbility(int abilityIndex)
+        public void AttemptSpecialAbility(int abilityIndex, GameObject target = null)
         {
+            var staminaComponent = GetComponent<SpecialAbilities>();
             var staminaCost = abilities[abilityIndex].GetStaminaCost();
 
             if (staminaCost <= currentStaminaPoints)
             {
-                var player = GetComponent<Player>();
                 ConsumeEnergy(staminaCost);
-                var abilityParams = new AbilityUseParams(player.GetBaseDamage());
-                abilities[abilityIndex].Use(abilityParams);
+                abilities[abilityIndex].Use(target);
             }
             else
             {
-                // TODO play out of stamina sound
+                audioSource.PlayOneShot(outOfStamina);
             }
         }
     }

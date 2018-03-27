@@ -10,7 +10,7 @@ namespace RPG.Characters
 
         const float PARTICLE_CLEANUP_DELAY = 20f;
 
-        public abstract void Use(AbilityUseParams useParams);
+        public abstract void Use(GameObject target = null);
 
         public void SetConfig(AbilityConfig configToSet)
         {
