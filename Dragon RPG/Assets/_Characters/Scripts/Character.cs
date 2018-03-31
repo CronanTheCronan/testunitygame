@@ -14,17 +14,20 @@ namespace RPG.Characters
         const string HORIZONTAL = "Horizontal";
         const string VERTICAL = "Vertical";
 
-        [Header("Setup Settings")]
+        [Header("Audio")]
+        [SerializeField] float audioSourceSpatialBlend = 0.5f;
+
+        [Header("Animator")]
         [SerializeField] RuntimeAnimatorController animatorController;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
         [SerializeField] Avatar characterAvatar;
 
-        [Header("Capsule Collider Settings")]
+        [Header("Capsule Collider")]
         [SerializeField] Vector3 colliderCenter = new Vector3(0, 0.54f, 0);
         [SerializeField] float colliderRadius = 0.26f;
         [SerializeField] float colliderHeight = 1.07f;
 
-        [Header("Movement Properties")]
+        [Header("Movement")]
         [SerializeField] float stoppingDistance = 1f;
         [SerializeField] AudioClip attackSoundClip;
         [SerializeField] float groundCheckDistance = 0.1f;
@@ -75,6 +78,12 @@ namespace RPG.Characters
             animator.runtimeAnimatorController = animatorController;
             animator.avatar = characterAvatar;
 
+            playerRigidbody = gameObject.AddComponent<Rigidbody>();
+            playerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.spatialBlend = audioSourceSpatialBlend;
+
             var capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
             capsuleCollider.radius = colliderRadius;
             capsuleCollider.center = colliderCenter;
@@ -83,13 +92,7 @@ namespace RPG.Characters
         void Start()
         {
             player = GetComponent<Player>();
-
-            audioSource = GetComponent<AudioSource>();
             specialAbilities = GetComponent<SpecialAbilities>();
-
-            playerRigidbody = GetComponent<Rigidbody>();
-
-            playerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             origGroundCheckDistance = groundCheckDistance;
 
 
